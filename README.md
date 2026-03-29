@@ -219,7 +219,7 @@ curl https://YOUR-FLY-APP.fly.dev/latest-block
 
 ## License
 
-MIT © 2026 CipherLabsX C Corp
+MIT © 2026 Balddev tm
 
 This project is open-source and free to use, modify, and distribute under the MIT License.
 
