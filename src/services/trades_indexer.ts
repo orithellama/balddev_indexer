@@ -311,7 +311,7 @@ async function processSignatureForPool(store: TradeStore, pool: string, sig: str
     });
   } catch {}
 
-  (globalThis as any).__onOrbitTrade?.(trade);
+  (globalThis as any).__onBalddevTrade?.(trade);
 }
 
 /**

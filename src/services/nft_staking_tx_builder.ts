@@ -2,15 +2,15 @@
  * NFT Staking Utilities
  *
  * Provides helper functions for querying NFT stake status and deriving PDAs
- * for the Cipher NFT Staking program.
+ * for the Balddev NFT Staking program.
  */
 
 import { PublicKey } from "@solana/web3.js";
 import * as anchor from "@coral-xyz/anchor";
 import type { Program } from "@coral-xyz/anchor";
 import { connection } from "../solana.js";
-import type { CipherNftStaking } from "../idl/cipher_nft_staking.js";
-import cipherNftStakingIdl from "../idl/cipher_nft_staking.json" with { type: "json" };
+import type { BalddevNftStaking } from "../idl/balddev_nft_staking.js";
+import balddevNftStakingIdl from "../idl/balddev_nft_staking.json" with { type: "json" };
 
 const { Program: AnchorProgram, AnchorProvider } = anchor;
 
@@ -20,7 +20,7 @@ const METADATA_PROGRAM_ID = new PublicKey("metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt
 /**
  * Get program instance
  */
-function getProgram(userPubkey: PublicKey): Program<CipherNftStaking> {
+function getProgram(userPubkey: PublicKey): Program<BalddevNftStaking> {
   const provider = new AnchorProvider(
     connection,
     {
@@ -31,7 +31,7 @@ function getProgram(userPubkey: PublicKey): Program<CipherNftStaking> {
     { commitment: "confirmed" }
   );
 
-  return new AnchorProgram(cipherNftStakingIdl as CipherNftStaking, provider);
+  return new AnchorProgram(balddevNftStakingIdl as BalddevNftStaking, provider);
 }
 
 /**

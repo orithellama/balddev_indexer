@@ -135,13 +135,13 @@ export async function v1Routes(app: FastifyInstance) {
     conn.socket.on("close", () => {
       try {
         const sockAny = conn.socket as any;
-        if (sockAny.__orbitPools?.clear) sockAny.__orbitPools.clear();
+        if (sockAny.__balddevPools?.clear) sockAny.__balddevPools.clear();
       } catch {}
       app.wsHub.remove(conn.socket);
     });
 
     const sockAny = conn.socket as any;
-    sockAny.__orbitPools = sockAny.__orbitPools ?? new Set<string>();
+    sockAny.__balddevPools = sockAny.__balddevPools ?? new Set<string>();
 
     conn.socket.on("message", async (raw) => {
       let msg: any = null;
@@ -176,7 +176,7 @@ export async function v1Routes(app: FastifyInstance) {
           return;
         }
 
-        sockAny.__orbitPools.add(pool);
+        sockAny.__balddevPools.add(pool);
 
         const trades = getTrades(app.tradeStore, pool, limit ?? 10)
           .slice()
@@ -209,7 +209,7 @@ export async function v1Routes(app: FastifyInstance) {
 
         if (!parsed.success) return;
 
-        sockAny.__orbitPools?.delete(parsed.data.pool);
+        sockAny.__balddevPools?.delete(parsed.data.pool);
         return;
       }
     });

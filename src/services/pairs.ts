@@ -14,7 +14,7 @@ export async function readPair(id: string) {
   const p = await readPool(poolId);
 
   // IMPORTANT: Requires immutable asset ordering.
-  // For Orbit: baseMint/quoteMint are canonical in your Pool struct => use them as-is.
+  // For Balddev: baseMint/quoteMint are canonical in your Pool struct => use them as-is.
   return {
     pair: {
       id: poolId,

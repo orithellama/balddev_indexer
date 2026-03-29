@@ -1,7 +1,7 @@
 /**
  * NFT Staking Realtime Indexer
  *
- * Listens for NFT staking events from the Cipher NFT Staking program and
+ * Listens for NFT staking events from the Balddev NFT Staking program and
  * maintains the nft_stakes table with current stake positions.
  *
  * Events handled:

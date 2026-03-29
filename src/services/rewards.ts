@@ -1,8 +1,8 @@
 import { Connection, PublicKey } from "@solana/web3.js";
 import { AnchorProvider, Program, Wallet } from "@coral-xyz/anchor";
 import { connection, PROGRAM_ID } from "../solana.js";
-import type { OrbitFinance } from "../idl/orbit_finance.js";
-import { ORBIT_IDL } from "../idl/coder.js";
+import type { BalddevFinance } from "../idl/balddev_finance.js";
+import { BALDDEV_IDL } from "../idl/coder.js";
 
 const Q128 = 2n ** 128n;
 const CIPHER_MINT = new PublicKey("Ciphern9cCXtms66s8Mm6wCFC27b2JProRQLYmiLMH3N");
@@ -22,11 +22,11 @@ function readOnlyWallet(identity: PublicKey): Wallet {
   } as unknown as Wallet;
 }
 
-function getProgramReadOnly(conn: Connection, identity: PublicKey): Program<OrbitFinance> {
+function getProgramReadOnly(conn: Connection, identity: PublicKey): Program<BalddevFinance> {
   const provider = new AnchorProvider(conn, readOnlyWallet(identity), {
     commitment: "confirmed",
   });
-  return new Program<OrbitFinance>(ORBIT_IDL as any, provider);
+  return new Program<BalddevFinance>(BALDDEV_IDL as any, provider);
 }
 
 function formatUnits(amount: bigint, decimals: number): string {
@@ -195,7 +195,7 @@ async function dasGetAssets(owner: string): Promise<DasAsset[]> {
     headers: { "content-type": "application/json" },
     body: JSON.stringify({
       jsonrpc: "2.0",
-      id: "orbit",
+      id: "balddev",
       method: "getAssetsByOwner",
       params: { ownerAddress: owner, page: 1, limit: 1000 },
     }),

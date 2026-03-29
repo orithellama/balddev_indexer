@@ -2,7 +2,7 @@
  * Pool Creation Service
  *
  * Builds unsigned transactions for creating new liquidity pools.
- * Orbit Finance DLMM program IDL for init_pool (merged with vault creation).
+ * Balddev program IDL for init_pool (merged with vault creation).
  *
  * OPTIMIZATION: init_pool and init_pool_vaults merged into single instruction (saves 1 tx).
  *
@@ -24,7 +24,7 @@ import { TOKEN_PROGRAM_ID } from "@solana/spl-token";
 import anchorPkg from "@coral-xyz/anchor";
 const { BorshCoder } = anchorPkg;
 import BN from "bn.js";
-import { ORBIT_IDL } from "../idl/coder.js";
+import { BALDDEV_IDL } from "../idl/coder.js";
 import { PROGRAM_ID } from "../solana.js";
 import {
   calculateDistributionWeights,
@@ -454,7 +454,7 @@ export async function buildPoolCreationTransactions(
   const lpMintPk = new PublicKey(lpMintPublicKey);
 
   // Build init_pool instruction
-  const coder = new BorshCoder(ORBIT_IDL);
+  const coder = new BorshCoder(BALDDEV_IDL);
 
   const initPoolData = coder.instruction.encode("init_pool", {
     base_mint: baseMintPk,
@@ -580,7 +580,7 @@ export async function buildPoolCreationWithLiquidityTransactions(
   const quoteMintPk = new PublicKey(quoteMint);
   const poolPda = new PublicKey(baseResult.poolAddress);
 
-  const coder = new BorshCoder(ORBIT_IDL);
+  const coder = new BorshCoder(BALDDEV_IDL);
   const priorityFeeMicroLamports = getPriorityFeeMicroLamports(priorityLevel);
   // Increased from 1M to 1.4M to handle batched instructions (BinArrays, deposits)
   // Wallet simulation needs headroom - 1M was causing simulation failures
@@ -1592,7 +1592,7 @@ export async function buildPoolCreationBatchTransactions(
   const quoteMintPk = new PublicKey(quoteMint);
   const poolPda = new PublicKey(baseResult.poolAddress);
 
-  const coder = new BorshCoder(ORBIT_IDL);
+  const coder = new BorshCoder(BALDDEV_IDL);
   const priorityFeeMicroLamports = getPriorityFeeMicroLamports(priorityLevel);
   const computeUnitLimitIx = ComputeBudgetProgram.setComputeUnitLimit({ units: 1_400_000 });
   const computeUnitPriceIx = ComputeBudgetProgram.setComputeUnitPrice({ microLamports: priorityFeeMicroLamports });
@@ -1943,7 +1943,7 @@ export async function buildPoolCreationBatchTransactions(
  *
  * Seeds: ["position_bin", position, bin_index (i32 4 bytes, little-endian)]
  *
- * Reference: /backend_dlmm/programs/orbit_finance/src/instructions/add_liquidity_batch.rs:448
+ * Reference: /backend_dlmm/programs/balddev/src/instructions/add_liquidity_batch.rs:448
  * The Rust code uses: bin_index.to_le_bytes() where bin_index is i32, producing 4 bytes.
  *
  * Note: While PositionBin state stores bin_index as u64, the PDA derivation itself

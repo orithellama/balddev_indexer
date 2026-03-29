@@ -1,13 +1,19 @@
-{
+/**
+ * Program IDL in camelCase format in order to be used in JS/TS.
+ *
+ * Note that this is only a type helper and is not the actual IDL. The original
+ * IDL can be found at `target/idl/balddev_finance.json`.
+ */
+export type BalddevFinance = {
   "address": "Fn3fA3fjsmpULNL7E9U79jKTe1KHxPtQeWdURCbJXCnM",
   "metadata": {
-    "name": "orbit_finance",
+    "name": "balddevFinance",
     "version": "0.1.0",
     "spec": "0.1.0"
   },
   "instructions": [
     {
-      "name": "add_liquidity_batch",
+      "name": "addLiquidityBatch",
       "docs": [
         "Adds liquidity to multiple bins with LAZY ACCOUNT CREATION.",
         "",
@@ -102,39 +108,39 @@
           "signer": true
         },
         {
-          "name": "user_base",
+          "name": "userBase",
           "docs": [
             "User's base token account."
           ],
           "writable": true
         },
         {
-          "name": "user_quote",
+          "name": "userQuote",
           "docs": [
             "User's quote token account."
           ],
           "writable": true
         },
         {
-          "name": "base_vault",
+          "name": "baseVault",
           "docs": [
             "Pool's base vault."
           ],
           "writable": true
         },
         {
-          "name": "quote_vault",
+          "name": "quoteVault",
           "docs": [
             "Pool's quote vault."
           ],
           "writable": true
         },
         {
-          "name": "token_program",
+          "name": "tokenProgram",
           "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
         },
         {
-          "name": "system_program",
+          "name": "systemProgram",
           "address": "11111111111111111111111111111111"
         },
         {
@@ -152,7 +158,7 @@
           "type": {
             "vec": {
               "defined": {
-                "name": "BinLiquidityDeposit"
+                "name": "binLiquidityDeposit"
               }
             }
           }
@@ -160,7 +166,7 @@
       ]
     },
     {
-      "name": "add_liquidity_v2",
+      "name": "addLiquidityV2",
       "docs": [
         "Adds liquidity to multiple bins using BinArray architecture.",
         "",
@@ -200,28 +206,28 @@
           "signer": true
         },
         {
-          "name": "owner_base",
+          "name": "ownerBase",
           "docs": [
             "Owner's base token account."
           ],
           "writable": true
         },
         {
-          "name": "owner_quote",
+          "name": "ownerQuote",
           "docs": [
             "Owner's quote token account."
           ],
           "writable": true
         },
         {
-          "name": "base_vault",
+          "name": "baseVault",
           "docs": [
             "Pool's base vault."
           ],
           "writable": true
         },
         {
-          "name": "quote_vault",
+          "name": "quoteVault",
           "docs": [
             "Pool's quote vault."
           ],
@@ -259,13 +265,13 @@
               {
                 "kind": "account",
                 "path": "position.nonce",
-                "account": "Position"
+                "account": "position"
               }
             ]
           }
         },
         {
-          "name": "token_program",
+          "name": "tokenProgram",
           "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
         }
       ],
@@ -275,7 +281,7 @@
           "type": {
             "vec": {
               "defined": {
-                "name": "BinLiquidityDeposit"
+                "name": "binLiquidityDeposit"
               }
             }
           }
@@ -283,7 +289,7 @@
       ]
     },
     {
-      "name": "claim_holder_rewards",
+      "name": "claimHolderRewards",
       "docs": [
         "Claims holder rewards for CIPHER token holders.",
         "**STAKING REQUIRED**: Users claim based on time-weighted staked CIPHER amount.",
@@ -325,7 +331,7 @@
           ]
         },
         {
-          "name": "holder_global_state",
+          "name": "holderGlobalState",
           "docs": [
             "Global holder state (read current index)"
           ]
@@ -338,21 +344,21 @@
           "signer": true
         },
         {
-          "name": "user_reward_destination",
+          "name": "userRewardDestination",
           "docs": [
             "User's destination token account for rewards (pool quote token)"
           ],
           "writable": true
         },
         {
-          "name": "holders_fee_vault",
+          "name": "holdersFeeVault",
           "docs": [
             "Holders fee vault (source of reward tokens)"
           ],
           "writable": true
         },
         {
-          "name": "user_holder_state",
+          "name": "userHolderState",
           "docs": [
             "User holder state (must be synced via sync_holder_stake at least once)",
             "PDA: [b\"holder_user\", user]",
@@ -385,20 +391,20 @@
           }
         },
         {
-          "name": "pool_authority",
+          "name": "poolAuthority",
           "docs": [
             "Pool PDA authority (signs for holders_fee_vault transfer)"
           ]
         },
         {
-          "name": "token_program",
+          "name": "tokenProgram",
           "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
         }
       ],
       "args": []
     },
     {
-      "name": "claim_nft_rewards",
+      "name": "claimNftRewards",
       "docs": [
         "Claims NFT rewards for CIPHER_OWLS NFT holders.",
         "**NO STAKING REQUIRED**: Users claim based on NFT ownership at claim time.",
@@ -437,7 +443,7 @@
           ]
         },
         {
-          "name": "nft_global_state",
+          "name": "nftGlobalState",
           "docs": [
             "Global NFT state (read current index)"
           ]
@@ -450,7 +456,7 @@
           "signer": true
         },
         {
-          "name": "user_reward_destination",
+          "name": "userRewardDestination",
           "docs": [
             "User's destination token account for rewards (pool quote token)",
             "SECURITY FIX: Added constraint validation for defense-in-depth"
@@ -458,7 +464,7 @@
           "writable": true
         },
         {
-          "name": "nft_fee_vault",
+          "name": "nftFeeVault",
           "docs": [
             "NFT fee vault (source of reward tokens)",
             "SECURITY FIX: Added constraint validation for defense-in-depth"
@@ -466,7 +472,7 @@
           "writable": true
         },
         {
-          "name": "user_nft_state",
+          "name": "userNftState",
           "docs": [
             "User NFT state (must be pre-initialized via init_user_nft_state)",
             "PDA: [b\"nft_user\", user]",
@@ -496,21 +502,21 @@
           }
         },
         {
-          "name": "pool_authority",
+          "name": "poolAuthority",
           "docs": [
             "Pool PDA authority (signs for nft_fee_vault transfer)",
             "SECURITY FIX: Validated against derived pool PDA in instruction body (step 3)"
           ]
         },
         {
-          "name": "token_program",
+          "name": "tokenProgram",
           "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
         }
       ],
       "args": []
     },
     {
-      "name": "claim_protocol_fees",
+      "name": "claimProtocolFees",
       "docs": [
         "Claims protocol fees from fee vaults."
       ],
@@ -530,64 +536,64 @@
           "writable": true
         },
         {
-          "name": "fee_withdraw_authority",
+          "name": "feeWithdrawAuthority",
           "signer": true
         },
         {
-          "name": "creator_fee_vault",
+          "name": "creatorFeeVault",
           "writable": true
         },
         {
-          "name": "creator_destination",
+          "name": "creatorDestination",
           "docs": [
             "Where creator fees are finally sent (pool creator, DAO treasury, etc.)"
           ],
           "writable": true
         },
         {
-          "name": "holders_fee_vault",
+          "name": "holdersFeeVault",
           "writable": true
         },
         {
-          "name": "holders_destination",
+          "name": "holdersDestination",
           "docs": [
             "Aggregator / distributor for token holders rewards"
           ],
           "writable": true
         },
         {
-          "name": "nft_fee_vault",
+          "name": "nftFeeVault",
           "writable": true
         },
         {
-          "name": "nft_destination",
+          "name": "nftDestination",
           "docs": [
             "Aggregator / distributor for NFT holders rewards"
           ],
           "writable": true
         },
         {
-          "name": "token_program",
+          "name": "tokenProgram",
           "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
         }
       ],
       "args": [
         {
-          "name": "take_creator",
+          "name": "takeCreator",
           "type": "u64"
         },
         {
-          "name": "take_holders",
+          "name": "takeHolders",
           "type": "u64"
         },
         {
-          "name": "take_nft",
+          "name": "takeNft",
           "type": "u64"
         }
       ]
     },
     {
-      "name": "close_position",
+      "name": "closePosition",
       "docs": [
         "Closes a position (owner only). Position must have no active liquidity."
       ],
@@ -661,7 +667,7 @@
       ]
     },
     {
-      "name": "create_bin_array",
+      "name": "createBinArray",
       "docs": [
         "Creates a new BinArray account (holds 64 consecutive bins).",
         "",
@@ -703,7 +709,7 @@
           "signer": true
         },
         {
-          "name": "bin_array",
+          "name": "binArray",
           "docs": [
             "New BinArray account to initialize.",
             "Seeds: [\"bin_array\", pool, lower_bin_index_le]",
@@ -732,25 +738,25 @@
               },
               {
                 "kind": "arg",
-                "path": "lower_bin_index"
+                "path": "lowerBinIndex"
               }
             ]
           }
         },
         {
-          "name": "system_program",
+          "name": "systemProgram",
           "address": "11111111111111111111111111111111"
         }
       ],
       "args": [
         {
-          "name": "lower_bin_index",
+          "name": "lowerBinIndex",
           "type": "i32"
         }
       ]
     },
     {
-      "name": "init_holder_global_state",
+      "name": "initHolderGlobalState",
       "docs": [
         "Initializes global holder reward state (ADMIN ONLY - ONE-TIME).",
         "**CRITICAL**: Must be called during deployment before any user can claim rewards.",
@@ -788,14 +794,14 @@
           "signer": true
         },
         {
-          "name": "cipher_mint",
+          "name": "cipherMint",
           "docs": [
             "CIPHER token mint used to query total supply.",
             "The address is validated in the instruction body."
           ]
         },
         {
-          "name": "holder_global_state",
+          "name": "holderGlobalState",
           "docs": [
             "Global holder state PDA.",
             "Created once and shared across all pools."
@@ -825,14 +831,14 @@
           }
         },
         {
-          "name": "system_program",
+          "name": "systemProgram",
           "address": "11111111111111111111111111111111"
         }
       ],
       "args": []
     },
     {
-      "name": "init_nft_global_state",
+      "name": "initNftGlobalState",
       "docs": [
         "Initializes global NFT reward state (ADMIN ONLY - ONE-TIME).",
         "**CRITICAL**: Must be called during deployment before any user can claim NFT rewards.",
@@ -868,7 +874,7 @@
           "signer": true
         },
         {
-          "name": "nft_global_state",
+          "name": "nftGlobalState",
           "docs": [
             "Global NFT state PDA.",
             "Created once and shared across all pools."
@@ -895,14 +901,14 @@
           }
         },
         {
-          "name": "system_program",
+          "name": "systemProgram",
           "address": "11111111111111111111111111111111"
         }
       ],
       "args": []
     },
     {
-      "name": "init_oracle",
+      "name": "initOracle",
       "docs": [
         "Initializes the Oracle account for price observation tracking.",
         "Optional - pools can function without oracle, but oracle enables TWAP calculation",
@@ -960,14 +966,14 @@
           "signer": true
         },
         {
-          "name": "system_program",
+          "name": "systemProgram",
           "address": "11111111111111111111111111111111"
         }
       ],
       "args": []
     },
     {
-      "name": "init_pool",
+      "name": "initPool",
       "docs": [
         "Initializes a new liquidity pool (state + lp_mint + registry + vaults).",
         "OPTIMIZATION: Merged init_pool + init_pool_vaults into single instruction (saves 1 tx).",
@@ -996,13 +1002,13 @@
           "name": "creator"
         },
         {
-          "name": "base_mint_account",
+          "name": "baseMintAccount",
           "docs": [
             "Base mint (validated by token::mint constraint on vaults)"
           ]
         },
         {
-          "name": "quote_mint_account",
+          "name": "quoteMintAccount",
           "docs": [
             "Quote mint (validated by token::mint constraint on vaults)"
           ]
@@ -1030,15 +1036,15 @@
               },
               {
                 "kind": "arg",
-                "path": "base_mint"
+                "path": "baseMint"
               },
               {
                 "kind": "arg",
-                "path": "quote_mint"
+                "path": "quoteMint"
               },
               {
                 "kind": "arg",
-                "path": "bin_step_bps"
+                "path": "binStepBps"
               },
               {
                 "kind": "arg",
@@ -1048,7 +1054,7 @@
           }
         },
         {
-          "name": "lp_mint",
+          "name": "lpMint",
           "docs": [
             "LP mint (fungible shares)"
           ],
@@ -1056,7 +1062,7 @@
           "signer": true
         },
         {
-          "name": "base_vault",
+          "name": "baseVault",
           "docs": [
             "Base vault - stores base token liquidity (Box to save stack space)"
           ],
@@ -1090,7 +1096,7 @@
           }
         },
         {
-          "name": "quote_vault",
+          "name": "quoteVault",
           "docs": [
             "Quote vault - stores quote token liquidity (Box to save stack space)"
           ],
@@ -1125,7 +1131,7 @@
           }
         },
         {
-          "name": "creator_fee_vault",
+          "name": "creatorFeeVault",
           "docs": [
             "Creator fee vault - stores creator's share of swap fees (Box to save stack space)"
           ],
@@ -1166,7 +1172,7 @@
           }
         },
         {
-          "name": "holders_fee_vault",
+          "name": "holdersFeeVault",
           "docs": [
             "Holders fee vault - stores LP holders' share of swap fees (Box to save stack space)"
           ],
@@ -1207,7 +1213,7 @@
           }
         },
         {
-          "name": "nft_fee_vault",
+          "name": "nftFeeVault",
           "docs": [
             "NFT fee vault - stores NFT holders' share of swap fees (Box to save stack space)"
           ],
@@ -1244,7 +1250,7 @@
           }
         },
         {
-          "name": "protocol_fee_vault",
+          "name": "protocolFeeVault",
           "docs": [
             "Protocol fee vault - stores protocol's share (12.5% of swap fees) (Box to save stack space)",
             "Can be permissionlessly swept to Squads multisig via transfer_protocol_fees instruction"
@@ -1311,15 +1317,15 @@
               },
               {
                 "kind": "arg",
-                "path": "base_mint"
+                "path": "baseMint"
               },
               {
                 "kind": "arg",
-                "path": "quote_mint"
+                "path": "quoteMint"
               },
               {
                 "kind": "arg",
-                "path": "bin_step_bps"
+                "path": "binStepBps"
               },
               {
                 "kind": "arg",
@@ -1329,47 +1335,47 @@
           }
         },
         {
-          "name": "system_program",
+          "name": "systemProgram",
           "address": "11111111111111111111111111111111"
         },
         {
-          "name": "token_program",
+          "name": "tokenProgram",
           "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
         }
       ],
       "args": [
         {
-          "name": "base_mint",
+          "name": "baseMint",
           "type": "pubkey"
         },
         {
-          "name": "quote_mint",
+          "name": "quoteMint",
           "type": "pubkey"
         },
         {
-          "name": "bin_step_bps",
+          "name": "binStepBps",
           "type": "u16"
         },
         {
-          "name": "initial_price_q64_64",
+          "name": "initialPriceQ6464",
           "type": "u128"
         },
         {
-          "name": "fee_config",
+          "name": "feeConfig",
           "type": {
             "defined": {
-              "name": "FeeConfig"
+              "name": "feeConfig"
             }
           }
         },
         {
-          "name": "accounting_mode",
+          "name": "accountingMode",
           "type": "u8"
         }
       ]
     },
     {
-      "name": "init_position",
+      "name": "initPosition",
       "docs": [
         "init a liquidity position single OR 2-sided"
       ],
@@ -1427,7 +1433,7 @@
           }
         },
         {
-          "name": "system_program",
+          "name": "systemProgram",
           "address": "11111111111111111111111111111111"
         }
       ],
@@ -1439,7 +1445,7 @@
       ]
     },
     {
-      "name": "init_position_bin",
+      "name": "initPositionBin",
       "docs": [
         "Initializes a PositionBin account binding a Position to a specific LiquidityBin.",
         "This is usually called once per bin you want to deposit into (or created lazily)."
@@ -1496,13 +1502,13 @@
               {
                 "kind": "account",
                 "path": "position.nonce",
-                "account": "Position"
+                "account": "position"
               }
             ]
           }
         },
         {
-          "name": "position_bin",
+          "name": "positionBin",
           "docs": [
             "PositionBin PDA (canonical)"
           ],
@@ -1532,25 +1538,25 @@
               },
               {
                 "kind": "arg",
-                "path": "bin_index"
+                "path": "binIndex"
               }
             ]
           }
         },
         {
-          "name": "system_program",
+          "name": "systemProgram",
           "address": "11111111111111111111111111111111"
         }
       ],
       "args": [
         {
-          "name": "bin_index",
+          "name": "binIndex",
           "type": "u64"
         }
       ]
     },
     {
-      "name": "init_user_holder_state",
+      "name": "initUserHolderState",
       "docs": [
         "Initializes user holder state for CIPHER holder rewards.",
         "**PREREQUISITE**: init_holder_global_state must be called first.",
@@ -1591,13 +1597,13 @@
           ]
         },
         {
-          "name": "holder_global_state",
+          "name": "holderGlobalState",
           "docs": [
             "Global holder state (read current index for initialization)"
           ]
         },
         {
-          "name": "user_holder_state",
+          "name": "userHolderState",
           "docs": [
             "User holder state (initialized)",
             "PDA: [b\"holder_user\", user]"
@@ -1629,14 +1635,14 @@
           }
         },
         {
-          "name": "system_program",
+          "name": "systemProgram",
           "address": "11111111111111111111111111111111"
         }
       ],
       "args": []
     },
     {
-      "name": "init_user_nft_state",
+      "name": "initUserNftState",
       "docs": [
         "Initializes user NFT state for CIPHER_OWLS NFT holder rewards.",
         "**PREREQUISITE**: init_nft_global_state must be called first.",
@@ -1677,13 +1683,13 @@
           ]
         },
         {
-          "name": "nft_global_state",
+          "name": "nftGlobalState",
           "docs": [
             "Global NFT state (read current index for initialization)"
           ]
         },
         {
-          "name": "user_nft_state",
+          "name": "userNftState",
           "docs": [
             "User NFT state (initialized)",
             "PDA: [b\"nft_user\", user]"
@@ -1712,14 +1718,14 @@
           }
         },
         {
-          "name": "system_program",
+          "name": "systemProgram",
           "address": "11111111111111111111111111111111"
         }
       ],
       "args": []
     },
     {
-      "name": "lock_liquidity",
+      "name": "lockLiquidity",
       "docs": [
         "Locks liquidity metadata."
       ],
@@ -1742,7 +1748,7 @@
           "writable": true
         },
         {
-          "name": "liquidity_lock",
+          "name": "liquidityLock",
           "docs": [
             "Per-user lock record (PDA) - manually initialized"
           ],
@@ -1778,32 +1784,32 @@
           "signer": true
         },
         {
-          "name": "user_lp",
+          "name": "userLp",
           "docs": [
             "User LP account to validate they have enough tokens and transfer from"
           ],
           "writable": true
         },
         {
-          "name": "lp_mint"
+          "name": "lpMint"
         },
         {
-          "name": "escrow_lp",
+          "name": "escrowLp",
           "docs": [
             "Escrow account owned by pool PDA to hold locked LP tokens"
           ],
           "writable": true
         },
         {
-          "name": "token_program",
+          "name": "tokenProgram",
           "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
         },
         {
-          "name": "associated_token_program",
+          "name": "associatedTokenProgram",
           "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
         },
         {
-          "name": "system_program",
+          "name": "systemProgram",
           "address": "11111111111111111111111111111111"
         }
       ],
@@ -1813,13 +1819,13 @@
           "type": "u64"
         },
         {
-          "name": "lock_duration",
+          "name": "lockDuration",
           "type": "i64"
         }
       ]
     },
     {
-      "name": "set_pause",
+      "name": "setPause",
       "docs": [
         "Pauses or unpauses the pool."
       ],
@@ -1851,7 +1857,7 @@
       ]
     },
     {
-      "name": "set_pause_bits",
+      "name": "setPauseBits",
       "docs": [
         "Sets pause bits for the pool (pause_guardian only)."
       ],
@@ -1871,13 +1877,13 @@
           "writable": true
         },
         {
-          "name": "pause_guardian",
+          "name": "pauseGuardian",
           "signer": true
         }
       ],
       "args": [
         {
-          "name": "new_bits",
+          "name": "newBits",
           "type": "u8"
         }
       ]
@@ -1937,7 +1943,7 @@
           "signer": true
         },
         {
-          "name": "user_source",
+          "name": "userSource",
           "docs": [
             "User's source token account (validated in function)",
             "SECURITY: Added ownership constraint"
@@ -1945,7 +1951,7 @@
           "writable": true
         },
         {
-          "name": "user_destination",
+          "name": "userDestination",
           "docs": [
             "User's destination token account (validated in function)",
             "SECURITY: Added ownership constraint"
@@ -1953,55 +1959,55 @@
           "writable": true
         },
         {
-          "name": "base_vault",
+          "name": "baseVault",
           "docs": [
             "Pool's base vault (validated in function)"
           ],
           "writable": true
         },
         {
-          "name": "quote_vault",
+          "name": "quoteVault",
           "docs": [
             "Pool's quote vault (validated in function)"
           ],
           "writable": true
         },
         {
-          "name": "protocol_fee_vault",
+          "name": "protocolFeeVault",
           "docs": [
             "Protocol fee vault (12.5% of total swap fees)"
           ],
           "writable": true
         },
         {
-          "name": "creator_fee_vault",
+          "name": "creatorFeeVault",
           "docs": [
             "Creator fee vault (validated in function)"
           ],
           "writable": true
         },
         {
-          "name": "holders_fee_vault",
+          "name": "holdersFeeVault",
           "docs": [
             "Holders fee vault (validated in function)"
           ],
           "writable": true
         },
         {
-          "name": "nft_fee_vault",
+          "name": "nftFeeVault",
           "docs": [
             "NFT fee vault (validated in function)"
           ],
           "writable": true
         },
         {
-          "name": "cipher_mint",
+          "name": "cipherMint",
           "docs": [
             "CIPHER token mint (for live supply query in index calculation)"
           ]
         },
         {
-          "name": "token_program",
+          "name": "tokenProgram",
           "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
         }
       ],
@@ -2010,7 +2016,7 @@
           "name": "spec",
           "type": {
             "defined": {
-              "name": "SwapSpec"
+              "name": "swapSpec"
             }
           }
         },
@@ -2018,14 +2024,14 @@
           "name": "route",
           "type": {
             "defined": {
-              "name": "SwapRoute"
+              "name": "swapRoute"
             }
           }
         }
       ]
     },
     {
-      "name": "sync_holder_stake",
+      "name": "syncHolderStake",
       "docs": [
         "Synchronizes user's staked CIPHER amount for time-weighted rewards.",
         "**CRITICAL**: Must be called after every stake/unstake in Streamflow.",
@@ -2068,14 +2074,14 @@
       ],
       "accounts": [
         {
-          "name": "holder_global_state",
+          "name": "holderGlobalState",
           "docs": [
             "Global holder reward state (for current index)"
           ],
           "writable": true
         },
         {
-          "name": "user_holder_state",
+          "name": "userHolderState",
           "docs": [
             "User's holder state (checkpoint tracking)",
             "MUST be pre-initialized via init_user_holder_state instruction",
@@ -2116,7 +2122,7 @@
           "signer": true
         },
         {
-          "name": "streamflow_stake_entry",
+          "name": "streamflowStakeEntry",
           "docs": [
             "SECURITY FIX: Streamflow StakeEntry account for verification",
             "PDA: [b\"stake-entry\", stake_pool, authority, nonce]",
@@ -2129,7 +2135,7 @@
           ]
         },
         {
-          "name": "streamflow_program",
+          "name": "streamflowProgram",
           "docs": [
             "SECURITY FIX: Streamflow program for verification"
           ]
@@ -2137,17 +2143,17 @@
       ],
       "args": [
         {
-          "name": "stake_pool_address",
+          "name": "stakePoolAddress",
           "type": "pubkey"
         },
         {
-          "name": "stake_entry_nonce",
+          "name": "stakeEntryNonce",
           "type": "u32"
         }
       ]
     },
     {
-      "name": "transfer_protocol_fees",
+      "name": "transferProtocolFees",
       "docs": [
         "Transfers protocol fees to Squads multisig vault.",
         "**PERMISSIONLESS**: Anyone can call this to sweep protocol fees.",
@@ -2180,7 +2186,7 @@
           ]
         },
         {
-          "name": "fee_withdraw_authority",
+          "name": "feeWithdrawAuthority",
           "docs": [
             "SECURITY FIX: Authorized signer for fee withdrawals",
             "Must match pool.fee_withdraw_authority"
@@ -2188,14 +2194,14 @@
           "signer": true
         },
         {
-          "name": "protocol_fee_vault",
+          "name": "protocolFeeVault",
           "docs": [
             "Protocol fee vault PDA (validated against pool.protocol_fee_vault)"
           ],
           "writable": true
         },
         {
-          "name": "squads_vault_destination",
+          "name": "squadsVaultDestination",
           "docs": [
             "Squads vault destination token account",
             "Must match SQUADS_VAULT constant and pool quote_mint"
@@ -2203,13 +2209,13 @@
           "writable": true
         },
         {
-          "name": "pool_authority",
+          "name": "poolAuthority",
           "docs": [
             "Pool PDA authority (signs for protocol_fee_vault transfer)"
           ]
         },
         {
-          "name": "token_program",
+          "name": "tokenProgram",
           "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
         }
       ],
@@ -2221,7 +2227,7 @@
       ]
     },
     {
-      "name": "unlock_liquidity",
+      "name": "unlockLiquidity",
       "docs": [
         "Unlock liquidity (if you implemented lock/unlock with escrow)."
       ],
@@ -2244,7 +2250,7 @@
           "writable": true
         },
         {
-          "name": "liquidity_lock",
+          "name": "liquidityLock",
           "docs": [
             "Per-user liquidity lock PDA"
           ],
@@ -2280,21 +2286,21 @@
           "signer": true
         },
         {
-          "name": "user_lp",
+          "name": "userLp",
           "docs": [
             "User LP account to receive unlocked tokens"
           ],
           "writable": true
         },
         {
-          "name": "escrow_lp",
+          "name": "escrowLp",
           "docs": [
             "Escrow LP account owned by pool PDA"
           ],
           "writable": true
         },
         {
-          "name": "token_program",
+          "name": "tokenProgram",
           "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
         }
       ],
@@ -2306,7 +2312,7 @@
       ]
     },
     {
-      "name": "unpause_override",
+      "name": "unpauseOverride",
       "docs": [
         "Emergency unpause override by Squads multisig.",
         "Can unpause pool regardless of pause_guardian state.",
@@ -2328,7 +2334,7 @@
           "writable": true
         },
         {
-          "name": "squads_signer",
+          "name": "squadsSigner",
           "docs": [
             "Squads multisig signer (hardcoded address)",
             "TODO: Require multisig approval (currently single signer for testing)"
@@ -2339,7 +2345,7 @@
       "args": []
     },
     {
-      "name": "update_admin",
+      "name": "updateAdmin",
       "docs": [
         "Updates the pool admin (admin only)."
       ],
@@ -2368,13 +2374,13 @@
       ],
       "args": [
         {
-          "name": "new_admin",
+          "name": "newAdmin",
           "type": "pubkey"
         }
       ]
     },
     {
-      "name": "update_authorities",
+      "name": "updateAuthorities",
       "docs": [
         "Updates pool authorities (admin only)."
       ],
@@ -2410,21 +2416,21 @@
       ],
       "args": [
         {
-          "name": "config_authority",
+          "name": "configAuthority",
           "type": "pubkey"
         },
         {
-          "name": "pause_guardian",
+          "name": "pauseGuardian",
           "type": "pubkey"
         },
         {
-          "name": "fee_withdraw_authority",
+          "name": "feeWithdrawAuthority",
           "type": "pubkey"
         }
       ]
     },
     {
-      "name": "update_fee_config",
+      "name": "updateFeeConfig",
       "docs": [
         "Updates the pool fee configuration."
       ],
@@ -2450,17 +2456,17 @@
       ],
       "args": [
         {
-          "name": "new_fee_config",
+          "name": "newFeeConfig",
           "type": {
             "defined": {
-              "name": "FeeConfig"
+              "name": "feeConfig"
             }
           }
         }
       ]
     },
     {
-      "name": "verify_pool_accounting",
+      "name": "verifyPoolAccounting",
       "docs": [
         "Verifies pool accounting by reconciling vault balances with bin reserves.",
         "",
@@ -2503,13 +2509,13 @@
           ]
         },
         {
-          "name": "base_vault",
+          "name": "baseVault",
           "docs": [
             "Pool's base vault (immutable - read-only verification)."
           ]
         },
         {
-          "name": "quote_vault",
+          "name": "quoteVault",
           "docs": [
             "Pool's quote vault (immutable - read-only verification)."
           ]
@@ -2526,7 +2532,7 @@
       "args": []
     },
     {
-      "name": "view_farming_position",
+      "name": "viewFarmingPosition",
       "docs": [
         "View farming position analytics (read-only).",
         "",
@@ -2566,13 +2572,13 @@
           ]
         },
         {
-          "name": "position_bin",
+          "name": "positionBin",
           "docs": [
             "PositionBin account"
           ]
         },
         {
-          "name": "bin_array",
+          "name": "binArray",
           "docs": [
             "BinArray containing the bin"
           ]
@@ -2581,7 +2587,7 @@
       "args": [],
       "returns": {
         "defined": {
-          "name": "FarmingPositionView"
+          "name": "farmingPositionView"
         }
       }
     },
@@ -2649,28 +2655,28 @@
           "signer": true
         },
         {
-          "name": "owner_base",
+          "name": "ownerBase",
           "docs": [
             "Owner's base token account."
           ],
           "writable": true
         },
         {
-          "name": "owner_quote",
+          "name": "ownerQuote",
           "docs": [
             "Owner's quote token account."
           ],
           "writable": true
         },
         {
-          "name": "base_vault",
+          "name": "baseVault",
           "docs": [
             "Pool's base vault."
           ],
           "writable": true
         },
         {
-          "name": "quote_vault",
+          "name": "quoteVault",
           "docs": [
             "Pool's quote vault."
           ],
@@ -2708,17 +2714,17 @@
               {
                 "kind": "account",
                 "path": "position.nonce",
-                "account": "Position"
+                "account": "position"
               }
             ]
           }
         },
         {
-          "name": "token_program",
+          "name": "tokenProgram",
           "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
         },
         {
-          "name": "system_program",
+          "name": "systemProgram",
           "address": "11111111111111111111111111111111"
         }
       ],
@@ -2727,16 +2733,16 @@
           "name": "spec",
           "type": {
             "defined": {
-              "name": "WithdrawalSpec"
+              "name": "withdrawalSpec"
             }
           }
         },
         {
-          "name": "min_base_out",
+          "name": "minBaseOut",
           "type": "u64"
         },
         {
-          "name": "min_quote_out",
+          "name": "minQuoteOut",
           "type": "u64"
         }
       ]
@@ -2744,7 +2750,7 @@
   ],
   "accounts": [
     {
-      "name": "BinArray",
+      "name": "binArray",
       "discriminator": [
         92,
         142,
@@ -2757,7 +2763,7 @@
       ]
     },
     {
-      "name": "HolderGlobalState",
+      "name": "holderGlobalState",
       "discriminator": [
         201,
         13,
@@ -2770,7 +2776,7 @@
       ]
     },
     {
-      "name": "LiquidityLock",
+      "name": "liquidityLock",
       "discriminator": [
         154,
         210,
@@ -2783,7 +2789,7 @@
       ]
     },
     {
-      "name": "NftGlobalState",
+      "name": "nftGlobalState",
       "discriminator": [
         153,
         133,
@@ -2796,7 +2802,7 @@
       ]
     },
     {
-      "name": "Oracle",
+      "name": "oracle",
       "discriminator": [
         139,
         194,
@@ -2809,7 +2815,7 @@
       ]
     },
     {
-      "name": "PairRegistry",
+      "name": "pairRegistry",
       "discriminator": [
         180,
         142,
@@ -2822,7 +2828,7 @@
       ]
     },
     {
-      "name": "Pool",
+      "name": "pool",
       "discriminator": [
         241,
         154,
@@ -2835,7 +2841,7 @@
       ]
     },
     {
-      "name": "Position",
+      "name": "position",
       "discriminator": [
         170,
         188,
@@ -2848,7 +2854,7 @@
       ]
     },
     {
-      "name": "PositionBin",
+      "name": "positionBin",
       "discriminator": [
         145,
         172,
@@ -2861,7 +2867,7 @@
       ]
     },
     {
-      "name": "UserHolderState",
+      "name": "userHolderState",
       "discriminator": [
         109,
         105,
@@ -2874,7 +2880,7 @@
       ]
     },
     {
-      "name": "UserNftState",
+      "name": "userNftState",
       "discriminator": [
         41,
         154,
@@ -2889,7 +2895,7 @@
   ],
   "events": [
     {
-      "name": "AdminUpdated",
+      "name": "adminUpdated",
       "discriminator": [
         69,
         82,
@@ -2902,7 +2908,7 @@
       ]
     },
     {
-      "name": "AuthoritiesUpdated",
+      "name": "authoritiesUpdated",
       "discriminator": [
         67,
         41,
@@ -2915,7 +2921,7 @@
       ]
     },
     {
-      "name": "BinArrayCreated",
+      "name": "binArrayCreated",
       "discriminator": [
         124,
         208,
@@ -2928,7 +2934,7 @@
       ]
     },
     {
-      "name": "BinLiquidityUpdated",
+      "name": "binLiquidityUpdated",
       "discriminator": [
         75,
         48,
@@ -2941,7 +2947,7 @@
       ]
     },
     {
-      "name": "ClaimHolderRewardsEvent",
+      "name": "claimHolderRewardsEvent",
       "discriminator": [
         97,
         42,
@@ -2954,7 +2960,7 @@
       ]
     },
     {
-      "name": "FeeConfigUpdated",
+      "name": "feeConfigUpdated",
       "discriminator": [
         45,
         50,
@@ -2967,7 +2973,7 @@
       ]
     },
     {
-      "name": "FeesDistributed",
+      "name": "feesDistributed",
       "discriminator": [
         209,
         24,
@@ -2980,7 +2986,7 @@
       ]
     },
     {
-      "name": "LiquidityBinCreated",
+      "name": "liquidityBinCreated",
       "discriminator": [
         193,
         62,
@@ -2993,7 +2999,7 @@
       ]
     },
     {
-      "name": "LiquidityDeposited",
+      "name": "liquidityDeposited",
       "discriminator": [
         218,
         155,
@@ -3006,7 +3012,7 @@
       ]
     },
     {
-      "name": "LiquidityLocked",
+      "name": "liquidityLocked",
       "discriminator": [
         150,
         201,
@@ -3019,7 +3025,7 @@
       ]
     },
     {
-      "name": "LiquidityWithdrawnAdmin",
+      "name": "liquidityWithdrawnAdmin",
       "discriminator": [
         236,
         107,
@@ -3032,7 +3038,7 @@
       ]
     },
     {
-      "name": "LiquidityWithdrawnUser",
+      "name": "liquidityWithdrawnUser",
       "discriminator": [
         142,
         245,
@@ -3045,7 +3051,7 @@
       ]
     },
     {
-      "name": "PairRegistered",
+      "name": "pairRegistered",
       "discriminator": [
         125,
         143,
@@ -3058,7 +3064,7 @@
       ]
     },
     {
-      "name": "PauseUpdated",
+      "name": "pauseUpdated",
       "discriminator": [
         203,
         203,
@@ -3071,7 +3077,7 @@
       ]
     },
     {
-      "name": "PoolAccountingVerified",
+      "name": "poolAccountingVerified",
       "discriminator": [
         191,
         132,
@@ -3084,7 +3090,7 @@
       ]
     },
     {
-      "name": "PoolInitialized",
+      "name": "poolInitialized",
       "discriminator": [
         100,
         118,
@@ -3097,7 +3103,7 @@
       ]
     },
     {
-      "name": "SwapExecuted",
+      "name": "swapExecuted",
       "discriminator": [
         150,
         166,
@@ -3110,7 +3116,7 @@
       ]
     },
     {
-      "name": "SyncHolderStakeEvent",
+      "name": "syncHolderStakeEvent",
       "discriminator": [
         47,
         69,
@@ -3126,353 +3132,353 @@
   "errors": [
     {
       "code": 6000,
-      "name": "InvalidLiquidity",
+      "name": "invalidLiquidity",
       "msg": "The provided liquidity value is invalid."
     },
     {
       "code": 6001,
-      "name": "CalculationError",
+      "name": "calculationError",
       "msg": "Calculation error occurred during arithmetic operations."
     },
     {
       "code": 6002,
-      "name": "InvalidInput",
+      "name": "invalidInput",
       "msg": "The provided input data is invalid."
     },
     {
       "code": 6003,
-      "name": "MissingBins",
+      "name": "missingBins",
       "msg": "Missing liquidity bin accounts for withdrawal; pass all active bins in remaining_accounts."
     },
     {
       "code": 6004,
-      "name": "InternalInconsistency",
+      "name": "internalInconsistency",
       "msg": "Operation aborted due to an internal inconsistency."
     },
     {
       "code": 6005,
-      "name": "UnknownError",
+      "name": "unknownError",
       "msg": "An unknown error has occurred."
     },
     {
       "code": 6006,
-      "name": "SlippageExceeded",
+      "name": "slippageExceeded",
       "msg": "The swap operation did not meet the minimum output requirements due to slippage protection."
     },
     {
       "code": 6007,
-      "name": "InsufficientLiquidity",
+      "name": "insufficientLiquidity",
       "msg": "The pool does not have sufficient liquidity to perform this operation."
     },
     {
       "code": 6008,
-      "name": "UnauthorizedOperation",
+      "name": "unauthorizedOperation",
       "msg": "Unauthorized operation attempted."
     },
     {
       "code": 6009,
-      "name": "InvalidAuthority",
+      "name": "invalidAuthority",
       "msg": "Invalid or missing protocol authority for this operation."
     },
     {
       "code": 6010,
-      "name": "InvalidAccountState",
+      "name": "invalidAccountState",
       "msg": "The account state is invalid."
     },
     {
       "code": 6011,
-      "name": "MintMismatch",
+      "name": "mintMismatch",
       "msg": "Token account mint does not match expected mint for this pool."
     },
     {
       "code": 6012,
-      "name": "OwnerMismatch",
+      "name": "ownerMismatch",
       "msg": "Token account owner does not match expected authority."
     },
     {
       "code": 6013,
-      "name": "TokenTransferFailed",
+      "name": "tokenTransferFailed",
       "msg": "Token transfer failed to execute correctly."
     },
     {
       "code": 6014,
-      "name": "PoolPaused",
+      "name": "poolPaused",
       "msg": "Pool is currently paused."
     },
     {
       "code": 6015,
-      "name": "OperationDisabled",
+      "name": "operationDisabled",
       "msg": "The requested operation is currently disabled."
     },
     {
       "code": 6016,
-      "name": "MigrationFailed",
+      "name": "migrationFailed",
       "msg": "Migration failed for this pool account."
     },
     {
       "code": 6017,
-      "name": "VersionMismatch",
+      "name": "versionMismatch",
       "msg": "On-chain version mismatch detected."
     },
     {
       "code": 6018,
-      "name": "PoolAlreadyExists",
+      "name": "poolAlreadyExists",
       "msg": "Pool already exists for this token pair and configuration."
     },
     {
       "code": 6019,
-      "name": "PoolNotFound",
+      "name": "poolNotFound",
       "msg": "Pool not found for the requested token pair and configuration."
     },
     {
       "code": 6020,
-      "name": "PairOrderingViolation",
+      "name": "pairOrderingViolation",
       "msg": "Invalid pair ordering; token pair must be canonicalized."
     },
     {
       "code": 6021,
-      "name": "RegistryViolation",
+      "name": "registryViolation",
       "msg": "Pair registry constraint violated."
     },
     {
       "code": 6022,
-      "name": "BinAlreadyExists",
+      "name": "binAlreadyExists",
       "msg": "Liquidity bin already exists for this index."
     },
     {
       "code": 6023,
-      "name": "BinNotFound",
+      "name": "binNotFound",
       "msg": "Liquidity bin not found for the requested index."
     },
     {
       "code": 6024,
-      "name": "InvalidBinBounds",
+      "name": "invalidBinBounds",
       "msg": "Invalid liquidity bin bounds."
     },
     {
       "code": 6025,
-      "name": "LPTokenMismatch",
+      "name": "lpTokenMismatch",
       "msg": "LP token mint or account does not match this pool."
     },
     {
       "code": 6026,
-      "name": "NotEnoughShares",
+      "name": "notEnoughShares",
       "msg": "Not enough LP shares to complete this operation."
     },
     {
       "code": 6027,
-      "name": "LPVaultMismatch",
+      "name": "lpVaultMismatch",
       "msg": "LP vault or escrow does not match expected authority."
     },
     {
       "code": 6028,
-      "name": "ReentrancyDetected",
+      "name": "reentrancyDetected",
       "msg": "Reentrancy detected: operation aborted for security reasons."
     },
     {
       "code": 6029,
-      "name": "PriceOutOfRange",
+      "name": "priceOutOfRange",
       "msg": "Initial deposit price deviates from target"
     },
     {
       "code": 6030,
-      "name": "PoolNotEmpty",
+      "name": "poolNotEmpty",
       "msg": "Pool reserves must be empty on bootstrap"
     },
     {
       "code": 6031,
-      "name": "InvalidVaultOwner",
+      "name": "invalidVaultOwner",
       "msg": "Vault is not owned by the SPL Token program"
     },
     {
       "code": 6032,
-      "name": "InvalidVaultAuthority",
+      "name": "invalidVaultAuthority",
       "msg": "Vault has an unexpected authority"
     },
     {
       "code": 6033,
-      "name": "InvalidVaultMint",
+      "name": "invalidVaultMint",
       "msg": "Vault has an unexpected mint"
     },
     {
       "code": 6034,
-      "name": "InvalidVaultData",
+      "name": "invalidVaultData",
       "msg": "Account data is too short to be a valid SPL Token account"
     },
     {
       "code": 6035,
-      "name": "ActiveLock",
+      "name": "activeLock",
       "msg": "Liquidity is currently locked and cannot be withdrawn until the lock period expires."
     },
     {
       "code": 6036,
-      "name": "InsufficientLP",
+      "name": "insufficientLp",
       "msg": "Insufficient LP tokens for this operation."
     },
     {
       "code": 6037,
-      "name": "VaultsAlreadyInitialized",
+      "name": "vaultsAlreadyInitialized",
       "msg": "Pool vaults already initialized."
     },
     {
       "code": 6038,
-      "name": "WrongMode",
+      "name": "wrongMode",
       "msg": "Wrong accounting mode for this instruction."
     },
     {
       "code": 6039,
-      "name": "InvalidTokenProgram",
+      "name": "invalidTokenProgram",
       "msg": "Invalid token program."
     },
     {
       "code": 6040,
-      "name": "InvalidProgramOwner",
+      "name": "invalidProgramOwner",
       "msg": "Invalid program-owned account."
     },
     {
       "code": 6041,
-      "name": "InvalidPda",
+      "name": "invalidPda",
       "msg": "Invalid PDA for the provided account."
     },
     {
       "code": 6042,
-      "name": "InvalidRemainingAccountsLayout",
+      "name": "invalidRemainingAccountsLayout",
       "msg": "Invalid remaining accounts layout."
     },
     {
       "code": 6043,
-      "name": "DuplicateBinIndex",
+      "name": "duplicateBinIndex",
       "msg": "Duplicate bin index provided."
     },
     {
       "code": 6044,
-      "name": "ActiveBinDepositForbidden",
+      "name": "activeBinDepositForbidden",
       "msg": "Deposits into the active bin are forbidden to prevent price manipulation."
     },
     {
       "code": 6045,
-      "name": "ActiveBinWithdrawalForbidden",
+      "name": "activeBinWithdrawalForbidden",
       "msg": "Withdrawals from the active bin are forbidden to prevent price manipulation."
     },
     {
       "code": 6046,
-      "name": "MissingPositionBin",
+      "name": "missingPositionBin",
       "msg": "Missing position bin account."
     },
     {
       "code": 6047,
-      "name": "PositionPoolMismatch",
+      "name": "positionPoolMismatch",
       "msg": "Position pool mismatch."
     },
     {
       "code": 6048,
-      "name": "PositionOwnerMismatch",
+      "name": "positionOwnerMismatch",
       "msg": "Position owner mismatch."
     },
     {
       "code": 6049,
-      "name": "BinPoolMismatch",
+      "name": "binPoolMismatch",
       "msg": "Bin pool mismatch."
     },
     {
       "code": 6050,
-      "name": "PositionBinPositionMismatch",
+      "name": "positionBinPositionMismatch",
       "msg": "PositionBin position mismatch."
     },
     {
       "code": 6051,
-      "name": "PositionBinPoolMismatch",
+      "name": "positionBinPoolMismatch",
       "msg": "PositionBin pool mismatch."
     },
     {
       "code": 6052,
-      "name": "AccountingInvariantViolation",
+      "name": "accountingInvariantViolation",
       "msg": "Accounting invariant violated."
     },
     {
       "code": 6053,
-      "name": "InsufficientPositionBinShares",
+      "name": "insufficientPositionBinShares",
       "msg": "Insufficient position bin shares."
     },
     {
       "code": 6054,
-      "name": "AccountingMismatch",
+      "name": "accountingMismatch",
       "msg": "Accounting mismatch: bin deltas do not match vault payout. Pass all active bins in remaining_accounts."
     },
     {
       "code": 6055,
-      "name": "DuplicateBinAccount",
+      "name": "duplicateBinAccount",
       "msg": "Duplicate bin account provided."
     },
     {
       "code": 6056,
-      "name": "InvalidMetadata",
+      "name": "invalidMetadata",
       "msg": "NFT metadata is invalid or cannot be parsed."
     },
     {
       "code": 6057,
-      "name": "InvalidNftRarity",
+      "name": "invalidNftRarity",
       "msg": "NFT rarity indicator not found or invalid in metadata name."
     },
     {
       "code": 6058,
-      "name": "InsufficientOracleData",
+      "name": "insufficientOracleData",
       "msg": "Insufficient oracle data: not enough price observations recorded."
     },
     {
       "code": 6059,
-      "name": "InvalidTimestamp",
+      "name": "invalidTimestamp",
       "msg": "Invalid timestamp for oracle observation."
     },
     {
       "code": 6060,
-      "name": "InvalidOracleWindow",
+      "name": "invalidOracleWindow",
       "msg": "Invalid oracle observation window."
     },
     {
       "code": 6061,
-      "name": "OraclePoolMismatch",
+      "name": "oraclePoolMismatch",
       "msg": "Oracle pool mismatch."
     },
     {
       "code": 6062,
-      "name": "InvalidBinArrayPda",
+      "name": "invalidBinArrayPda",
       "msg": "Invalid BinArray PDA derivation."
     },
     {
       "code": 6063,
-      "name": "InvalidPositionBinPda",
+      "name": "invalidPositionBinPda",
       "msg": "Invalid PositionBin PDA derivation."
     },
     {
       "code": 6064,
-      "name": "ClaimTooSoon",
+      "name": "claimTooSoon",
       "msg": "Claim cooldown not elapsed. Please wait before claiming again."
     },
     {
       "code": 6065,
-      "name": "PositionHasLiquidity",
+      "name": "positionHasLiquidity",
       "msg": "Position has active liquidity and cannot be closed. Withdraw all liquidity first."
     },
     {
       "code": 6066,
-      "name": "ExcessiveFee",
+      "name": "excessiveFee",
       "msg": "Fee exceeds maximum allowed (10%). Cannot set base_fee_bps > 1000."
     },
     {
       "code": 6067,
-      "name": "FeeConfigImmutable",
+      "name": "feeConfigImmutable",
       "msg": "Fee configuration is immutable after pool creation. Cannot change fees once pool has liquidity or swaps."
     },
     {
       "code": 6068,
-      "name": "PauseDurationExceeded",
+      "name": "pauseDurationExceeded",
       "msg": "Pause duration exceeds maximum allowed (7 days). Automatic unpause required."
     }
   ],
   "types": [
     {
-      "name": "AdminUpdated",
+      "name": "adminUpdated",
       "docs": [
         "Emitted when the admin rotates to a new key."
       ],
@@ -3484,11 +3490,11 @@
             "type": "pubkey"
           },
           {
-            "name": "old_admin",
+            "name": "oldAdmin",
             "type": "pubkey"
           },
           {
-            "name": "new_admin",
+            "name": "newAdmin",
             "type": "pubkey"
           },
           {
@@ -3499,7 +3505,7 @@
       }
     },
     {
-      "name": "AuthoritiesUpdated",
+      "name": "authoritiesUpdated",
       "docs": [
         "Emitted when auxiliary authorities are updated."
       ],
@@ -3511,15 +3517,15 @@
             "type": "pubkey"
           },
           {
-            "name": "config_authority",
+            "name": "configAuthority",
             "type": "pubkey"
           },
           {
-            "name": "pause_guardian",
+            "name": "pauseGuardian",
             "type": "pubkey"
           },
           {
-            "name": "fee_withdraw_authority",
+            "name": "feeWithdrawAuthority",
             "type": "pubkey"
           },
           {
@@ -3530,7 +3536,7 @@
       }
     },
     {
-      "name": "BinArray",
+      "name": "binArray",
       "docs": [
         "BinArray account holding BIN_ARRAY_SIZE (64) consecutive bins.",
         "Bins are indexed as: bin_index = lower_bin_index + array_offset (0..63)",
@@ -3568,7 +3574,7 @@
               "array": [
                 {
                   "defined": {
-                    "name": "CompactBin"
+                    "name": "compactBin"
                   }
                 },
                 64
@@ -3576,7 +3582,7 @@
             }
           },
           {
-            "name": "lower_bin_index",
+            "name": "lowerBinIndex",
             "docs": [
               "Starting bin index for this array (always multiple of BIN_ARRAY_SIZE)."
             ],
@@ -3590,7 +3596,7 @@
             "type": "u8"
           },
           {
-            "name": "_reserved",
+            "name": "reserved",
             "docs": [
               "Reserved for 16-byte alignment (u128 fields require struct to be 16-byte aligned)."
             ],
@@ -3605,7 +3611,7 @@
       }
     },
     {
-      "name": "BinArrayCreated",
+      "name": "binArrayCreated",
       "docs": [
         "Event emitted when a new BinArray is created."
       ],
@@ -3617,11 +3623,11 @@
             "type": "pubkey"
           },
           {
-            "name": "lower_bin_index",
+            "name": "lowerBinIndex",
             "type": "i32"
           },
           {
-            "name": "bin_array",
+            "name": "binArray",
             "type": "pubkey"
           },
           {
@@ -3632,7 +3638,7 @@
       }
     },
     {
-      "name": "BinLiquidityDeposit",
+      "name": "binLiquidityDeposit",
       "docs": [
         "Per-bin liquidity deposit specification."
       ],
@@ -3640,28 +3646,28 @@
         "kind": "struct",
         "fields": [
           {
-            "name": "bin_index",
+            "name": "binIndex",
             "docs": [
               "Bin index (canonically encoded)"
             ],
             "type": "u64"
           },
           {
-            "name": "base_in",
+            "name": "baseIn",
             "docs": [
               "Base tokens to deposit"
             ],
             "type": "u64"
           },
           {
-            "name": "quote_in",
+            "name": "quoteIn",
             "docs": [
               "Quote tokens to deposit"
             ],
             "type": "u64"
           },
           {
-            "name": "min_shares_out",
+            "name": "minSharesOut",
             "docs": [
               "Minimum shares expected (slippage protection)"
             ],
@@ -3671,7 +3677,7 @@
       }
     },
     {
-      "name": "BinLiquidityUpdated",
+      "name": "binLiquidityUpdated",
       "docs": [
         "Emitted whenever a bin’s reserves change (e.g., deposit or swap traversal)."
       ],
@@ -3683,29 +3689,29 @@
             "type": "pubkey"
           },
           {
-            "name": "bin_index",
+            "name": "binIndex",
             "type": "i64"
           },
           {
-            "name": "delta_base",
+            "name": "deltaBase",
             "docs": [
               "Change in base/quote reserve (unsigned magnitudes)."
             ],
             "type": "u128"
           },
           {
-            "name": "delta_quote",
+            "name": "deltaQuote",
             "type": "u128"
           },
           {
-            "name": "reserve_base",
+            "name": "reserveBase",
             "docs": [
               "Resulting reserves after the change."
             ],
             "type": "u128"
           },
           {
-            "name": "reserve_quote",
+            "name": "reserveQuote",
             "type": "u128"
           },
           {
@@ -3716,7 +3722,7 @@
       }
     },
     {
-      "name": "BinWithdrawal",
+      "name": "binWithdrawal",
       "docs": [
         "Per-bin withdrawal specification for exact mode."
       ],
@@ -3724,7 +3730,7 @@
         "kind": "struct",
         "fields": [
           {
-            "name": "bin_index",
+            "name": "binIndex",
             "docs": [
               "Bin index (canonically encoded)"
             ],
@@ -3741,7 +3747,7 @@
       }
     },
     {
-      "name": "ClaimHolderRewardsEvent",
+      "name": "claimHolderRewardsEvent",
       "docs": [
         "Emitted when user claims holder rewards based on staked CIPHER.",
         "",
@@ -3778,11 +3784,11 @@
             "type": "u128"
           },
           {
-            "name": "pending_claimed",
+            "name": "pendingClaimed",
             "type": "u128"
           },
           {
-            "name": "current_period_claimed",
+            "name": "currentPeriodClaimed",
             "type": "u128"
           },
           {
@@ -3793,7 +3799,7 @@
       }
     },
     {
-      "name": "CompactBin",
+      "name": "compactBin",
       "docs": [
         "Compact bin data stored within a BinArray.",
         "bin_index is implicitly derived as: lower_bin_index + offset"
@@ -3806,25 +3812,25 @@
         "kind": "struct",
         "fields": [
           {
-            "name": "reserve_base",
+            "name": "reserveBase",
             "docs": [
               "Actual token reserves at this bin's fixed price."
             ],
             "type": "u128"
           },
           {
-            "name": "reserve_quote",
+            "name": "reserveQuote",
             "type": "u128"
           },
           {
-            "name": "total_shares",
+            "name": "totalShares",
             "docs": [
               "Total bin shares outstanding across all positions."
             ],
             "type": "u128"
           },
           {
-            "name": "fee_growth_base_q128",
+            "name": "feeGrowthBaseQ128",
             "docs": [
               "Cumulative fee growth per unit of share in Q128 fixed-point.",
               "Used for auto-compounding fee distribution to position holders.",
@@ -3833,14 +3839,14 @@
             "type": "u128"
           },
           {
-            "name": "fee_growth_quote_q128",
+            "name": "feeGrowthQuoteQ128",
             "type": "u128"
           }
         ]
       }
     },
     {
-      "name": "FarmingPositionView",
+      "name": "farmingPositionView",
       "docs": [
         "Farming position view data (returned to client)."
       ],
@@ -3869,7 +3875,7 @@
             "type": "pubkey"
           },
           {
-            "name": "bin_index",
+            "name": "binIndex",
             "docs": [
               "Bin index"
             ],
@@ -3883,61 +3889,61 @@
             "type": "u128"
           },
           {
-            "name": "total_shares",
+            "name": "totalShares",
             "docs": [
               "Total shares in this bin"
             ],
             "type": "u128"
           },
           {
-            "name": "reserve_base",
+            "name": "reserveBase",
             "docs": [
               "Current reserves (position's share)"
             ],
             "type": "u128"
           },
           {
-            "name": "reserve_quote",
+            "name": "reserveQuote",
             "type": "u128"
           },
           {
-            "name": "accrued_fee_base",
+            "name": "accruedFeeBase",
             "docs": [
               "Accrued fees (auto-compounding)"
             ],
             "type": "u128"
           },
           {
-            "name": "accrued_fee_quote",
+            "name": "accruedFeeQuote",
             "type": "u128"
           },
           {
-            "name": "total_value_base",
+            "name": "totalValueBase",
             "docs": [
               "Total value (reserves + fees)"
             ],
             "type": "u128"
           },
           {
-            "name": "total_value_quote",
+            "name": "totalValueQuote",
             "type": "u128"
           },
           {
-            "name": "last_updated",
+            "name": "lastUpdated",
             "docs": [
               "Timestamps"
             ],
             "type": "i64"
           },
           {
-            "name": "position_created_at",
+            "name": "positionCreatedAt",
             "type": "i64"
           }
         ]
       }
     },
     {
-      "name": "FeeConfig",
+      "name": "feeConfig",
       "docs": [
         "Fee distribution configuration for the pool."
       ],
@@ -3948,59 +3954,59 @@
         "kind": "struct",
         "fields": [
           {
-            "name": "split_holders_microbps",
+            "name": "splitHoldersMicrobps",
             "type": "u32"
           },
           {
-            "name": "split_nft_microbps",
+            "name": "splitNftMicrobps",
             "type": "u32"
           },
           {
-            "name": "split_creator_extra_microbps",
+            "name": "splitCreatorExtraMicrobps",
             "type": "u32"
           },
           {
-            "name": "variable_fee_control",
+            "name": "variableFeeControl",
             "type": "u32"
           },
           {
-            "name": "max_volatility_accumulator",
+            "name": "maxVolatilityAccumulator",
             "type": "u32"
           },
           {
-            "name": "base_fee_bps",
+            "name": "baseFeeBps",
             "type": "u16"
           },
           {
-            "name": "creator_cut_bps",
+            "name": "creatorCutBps",
             "type": "u16"
           },
           {
-            "name": "legacy_volatility_multiplier_bps",
+            "name": "legacyVolatilityMultiplierBps",
             "type": "u16"
           },
           {
-            "name": "filter_period",
+            "name": "filterPeriod",
             "type": "u16"
           },
           {
-            "name": "decay_period",
+            "name": "decayPeriod",
             "type": "u16"
           },
           {
-            "name": "reduction_factor_bps",
+            "name": "reductionFactorBps",
             "type": "u16"
           },
           {
-            "name": "max_dynamic_fee_bps",
+            "name": "maxDynamicFeeBps",
             "type": "u16"
           },
           {
-            "name": "dynamic_fee_enabled",
+            "name": "dynamicFeeEnabled",
             "type": "u8"
           },
           {
-            "name": "_fee_reserved",
+            "name": "feeReserved",
             "type": {
               "array": [
                 "u8",
@@ -4012,7 +4018,7 @@
       }
     },
     {
-      "name": "FeeConfigUpdated",
+      "name": "feeConfigUpdated",
       "docs": [
         "Emitted whenever the fee configuration is changed."
       ],
@@ -4028,23 +4034,23 @@
             "type": "pubkey"
           },
           {
-            "name": "base_fee_bps",
+            "name": "baseFeeBps",
             "type": "u16"
           },
           {
-            "name": "creator_cut_bps",
+            "name": "creatorCutBps",
             "type": "u16"
           },
           {
-            "name": "split_holders_microbps",
+            "name": "splitHoldersMicrobps",
             "type": "u32"
           },
           {
-            "name": "split_nft_microbps",
+            "name": "splitNftMicrobps",
             "type": "u32"
           },
           {
-            "name": "split_creator_extra_microbps",
+            "name": "splitCreatorExtraMicrobps",
             "type": "u32"
           },
           {
@@ -4055,7 +4061,7 @@
       }
     },
     {
-      "name": "FeesDistributed",
+      "name": "feesDistributed",
       "docs": [
         "Emitted when fees are split to fee vaults during swap.",
         "V2: Includes protocol fee (12.5% of total) extracted FIRST before other splits."
@@ -4068,30 +4074,30 @@
             "type": "pubkey"
           },
           {
-            "name": "total_fee",
+            "name": "totalFee",
             "type": "u64"
           },
           {
-            "name": "protocol_fee",
+            "name": "protocolFee",
             "docs": [
               "Protocol cut (12.5% of total_fee, extracted FIRST)"
             ],
             "type": "u64"
           },
           {
-            "name": "creator_fee",
+            "name": "creatorFee",
             "type": "u64"
           },
           {
-            "name": "holders_fee",
+            "name": "holdersFee",
             "type": "u64"
           },
           {
-            "name": "nft_fee",
+            "name": "nftFee",
             "type": "u64"
           },
           {
-            "name": "creator_extra_fee",
+            "name": "creatorExtraFee",
             "type": "u64"
           },
           {
@@ -4102,7 +4108,7 @@
       }
     },
     {
-      "name": "HolderGlobalState",
+      "name": "holderGlobalState",
       "docs": [
         "Global state for CIPHER holder rewards across all pools.",
         "Tracks cumulative reward index using Q128 fixed-point arithmetic.",
@@ -4134,7 +4140,7 @@
         "kind": "struct",
         "fields": [
           {
-            "name": "total_rewards_accumulated",
+            "name": "totalRewardsAccumulated",
             "docs": [
               "Total rewards accumulated across all pools (in quote token terms, e.g., USDC/SOL)",
               "This is a cumulative counter that only increases"
@@ -4142,7 +4148,7 @@
             "type": "u128"
           },
           {
-            "name": "reward_index_q128",
+            "name": "rewardIndexQ128",
             "docs": [
               "Global reward index in Q128 fixed-point format",
               "Index = cumulative_fees * Q128 / total_cipher_supply",
@@ -4151,7 +4157,7 @@
             "type": "u128"
           },
           {
-            "name": "cached_total_supply",
+            "name": "cachedTotalSupply",
             "docs": [
               "Cached total CIPHER supply (updated periodically for gas optimization)",
               "Real-time supply queried on-chain during index updates"
@@ -4159,7 +4165,7 @@
             "type": "u64"
           },
           {
-            "name": "last_updated",
+            "name": "lastUpdated",
             "docs": [
               "Last timestamp when the index was updated",
               "Used for monitoring and preventing stale data"
@@ -4181,7 +4187,7 @@
             "type": "u8"
           },
           {
-            "name": "_reserved1",
+            "name": "reserved1",
             "docs": [
               "Reserved space for future upgrades (64 bytes: 32 + 32)",
               "Prevents need for migration if we add new fields",
@@ -4195,7 +4201,7 @@
             }
           },
           {
-            "name": "_reserved2",
+            "name": "reserved2",
             "type": {
               "array": [
                 "u8",
@@ -4207,7 +4213,7 @@
       }
     },
     {
-      "name": "LiquidityBinCreated",
+      "name": "liquidityBinCreated",
       "docs": [
         "Emitted when a new liquidity bin is created."
       ],
@@ -4219,19 +4225,19 @@
             "type": "pubkey"
           },
           {
-            "name": "bin_index",
+            "name": "binIndex",
             "type": "u64"
           },
           {
-            "name": "lower_bound_q64_64",
+            "name": "lowerBoundQ6464",
             "type": "u128"
           },
           {
-            "name": "upper_bound_q64_64",
+            "name": "upperBoundQ6464",
             "type": "u128"
           },
           {
-            "name": "initial_total_shares",
+            "name": "initialTotalShares",
             "docs": [
               "Initial bin share supply (position-bin accounting)."
             ],
@@ -4245,7 +4251,7 @@
       }
     },
     {
-      "name": "LiquidityDeposited",
+      "name": "liquidityDeposited",
       "docs": [
         "Emitted when a user deposits liquidity and receives LP shares."
       ],
@@ -4261,15 +4267,15 @@
             "type": "pubkey"
           },
           {
-            "name": "base_amount",
+            "name": "baseAmount",
             "type": "u64"
           },
           {
-            "name": "quote_amount",
+            "name": "quoteAmount",
             "type": "u64"
           },
           {
-            "name": "shares_minted",
+            "name": "sharesMinted",
             "docs": [
               "LP shares minted to the user (LP mint decimals, typically 9)."
             ],
@@ -4283,7 +4289,7 @@
       }
     },
     {
-      "name": "LiquidityLock",
+      "name": "liquidityLock",
       "docs": [
         "Liquidity lock account."
       ],
@@ -4299,18 +4305,18 @@
             "type": "pubkey"
           },
           {
-            "name": "locked_amount",
+            "name": "lockedAmount",
             "type": "u64"
           },
           {
-            "name": "lock_end",
+            "name": "lockEnd",
             "type": "i64"
           }
         ]
       }
     },
     {
-      "name": "LiquidityLocked",
+      "name": "liquidityLocked",
       "docs": [
         "Emitted when a user locks liquidity (book-entry in current code)."
       ],
@@ -4330,7 +4336,7 @@
             "type": "u64"
           },
           {
-            "name": "lock_end",
+            "name": "lockEnd",
             "type": "i64"
           },
           {
@@ -4341,7 +4347,7 @@
       }
     },
     {
-      "name": "LiquidityWithdrawnAdmin",
+      "name": "liquidityWithdrawnAdmin",
       "docs": [
         "Emitted when an admin performs a legacy/admin-only withdrawal."
       ],
@@ -4357,11 +4363,11 @@
             "type": "pubkey"
           },
           {
-            "name": "base_amount_out",
+            "name": "baseAmountOut",
             "type": "u64"
           },
           {
-            "name": "quote_amount_out",
+            "name": "quoteAmountOut",
             "type": "u64"
           },
           {
@@ -4372,7 +4378,7 @@
       }
     },
     {
-      "name": "LiquidityWithdrawnUser",
+      "name": "liquidityWithdrawnUser",
       "docs": [
         "Emitted when a user withdraws by burning LP shares."
       ],
@@ -4388,15 +4394,15 @@
             "type": "pubkey"
           },
           {
-            "name": "shares_burned",
+            "name": "sharesBurned",
             "type": "u64"
           },
           {
-            "name": "base_amount_out",
+            "name": "baseAmountOut",
             "type": "u64"
           },
           {
-            "name": "quote_amount_out",
+            "name": "quoteAmountOut",
             "type": "u64"
           },
           {
@@ -4407,7 +4413,7 @@
       }
     },
     {
-      "name": "NftGlobalState",
+      "name": "nftGlobalState",
       "docs": [
         "Global state for NFT holder rewards across all pools.",
         "Tracks cumulative reward index using Q128 fixed-point arithmetic.",
@@ -4440,7 +4446,7 @@
         "kind": "struct",
         "fields": [
           {
-            "name": "total_rewards_accumulated",
+            "name": "totalRewardsAccumulated",
             "docs": [
               "Total rewards accumulated across all pools (in quote token terms)",
               "This is a cumulative counter that only increases"
@@ -4448,7 +4454,7 @@
             "type": "u128"
           },
           {
-            "name": "reward_index_q128",
+            "name": "rewardIndexQ128",
             "docs": [
               "Global reward index in Q128 fixed-point format",
               "Index = cumulative_fees * Q128 / total_collection_weight",
@@ -4457,7 +4463,7 @@
             "type": "u128"
           },
           {
-            "name": "last_updated",
+            "name": "lastUpdated",
             "docs": [
               "Last timestamp when the index was updated",
               "Used for monitoring and preventing stale data"
@@ -4479,7 +4485,7 @@
             "type": "u8"
           },
           {
-            "name": "_pad",
+            "name": "pad",
             "docs": [
               "Additional padding for alignment"
             ],
@@ -4491,7 +4497,7 @@
             }
           },
           {
-            "name": "_reserved1",
+            "name": "reserved1",
             "docs": [
               "Reserved space for future upgrades (64 bytes: 32 + 32)",
               "Prevents need for migration if we add new fields",
@@ -4505,7 +4511,7 @@
             }
           },
           {
-            "name": "_reserved2",
+            "name": "reserved2",
             "type": {
               "array": [
                 "u8",
@@ -4517,7 +4523,7 @@
       }
     },
     {
-      "name": "Oracle",
+      "name": "oracle",
       "docs": [
         "Oracle account for tracking price observations.",
         "",
@@ -4546,21 +4552,21 @@
             "type": "pubkey"
           },
           {
-            "name": "active_index",
+            "name": "activeIndex",
             "docs": [
               "Current active observation index (circular buffer)"
             ],
             "type": "u16"
           },
           {
-            "name": "observation_count",
+            "name": "observationCount",
             "docs": [
               "Number of observations initialized (0 to MAX_OBSERVATIONS)"
             ],
             "type": "u16"
           },
           {
-            "name": "_reserved",
+            "name": "reserved",
             "docs": [
               "Reserved bytes to align observations array to 8-byte boundary",
               "(32 + 2 + 2 + 4 = 40 bytes, which is 8-byte aligned)"
@@ -4582,7 +4588,7 @@
               "array": [
                 {
                   "defined": {
-                    "name": "PriceObservation"
+                    "name": "priceObservation"
                   }
                 },
                 32
@@ -4593,7 +4599,7 @@
       }
     },
     {
-      "name": "PairRegistered",
+      "name": "pairRegistered",
       "docs": [
         "Emitted if you keep a separate register_pair instruction (factory/registry path)."
       ],
@@ -4601,11 +4607,11 @@
         "kind": "struct",
         "fields": [
           {
-            "name": "base_mint",
+            "name": "baseMint",
             "type": "pubkey"
           },
           {
-            "name": "quote_mint",
+            "name": "quoteMint",
             "type": "pubkey"
           },
           {
@@ -4613,7 +4619,7 @@
             "type": "pubkey"
           },
           {
-            "name": "bin_step_bps",
+            "name": "binStepBps",
             "type": "u16"
           },
           {
@@ -4624,7 +4630,7 @@
       }
     },
     {
-      "name": "PairRegistry",
+      "name": "pairRegistry",
       "docs": [
         "Pair registry to prevent duplicate pools.",
         "PDA seeds: [b\"registry\", base_mint, quote_mint, bin_step_bps]",
@@ -4634,14 +4640,14 @@
         "kind": "struct",
         "fields": [
           {
-            "name": "base_mint",
+            "name": "baseMint",
             "docs": [
               "Token pair (can be in any order)"
             ],
             "type": "pubkey"
           },
           {
-            "name": "quote_mint",
+            "name": "quoteMint",
             "type": "pubkey"
           },
           {
@@ -4652,14 +4658,14 @@
             "type": "pubkey"
           },
           {
-            "name": "bin_step_bps",
+            "name": "binStepBps",
             "docs": [
               "Bin step used by this pool (bps)."
             ],
             "type": "u16"
           },
           {
-            "name": "created_at",
+            "name": "createdAt",
             "docs": [
               "Creation timestamp."
             ],
@@ -4673,7 +4679,7 @@
             "type": "u8"
           },
           {
-            "name": "_reserved",
+            "name": "reserved",
             "docs": [
               "Reserved for future config (e.g., flags)."
             ],
@@ -4688,7 +4694,7 @@
       }
     },
     {
-      "name": "PauseUpdated",
+      "name": "pauseUpdated",
       "docs": [
         "Emitted when pause bitmask changes."
       ],
@@ -4719,7 +4725,7 @@
       }
     },
     {
-      "name": "Pool",
+      "name": "pool",
       "docs": [
         "Main pool account holding configuration, authorities, price cache and vaults.",
         "Fields are ordered to minimize padding for zero-copy compatibility."
@@ -4736,15 +4742,15 @@
             "type": "pubkey"
           },
           {
-            "name": "config_authority",
+            "name": "configAuthority",
             "type": "pubkey"
           },
           {
-            "name": "pause_guardian",
+            "name": "pauseGuardian",
             "type": "pubkey"
           },
           {
-            "name": "fee_withdraw_authority",
+            "name": "feeWithdrawAuthority",
             "type": "pubkey"
           },
           {
@@ -4752,35 +4758,35 @@
             "type": "pubkey"
           },
           {
-            "name": "base_mint",
+            "name": "baseMint",
             "type": "pubkey"
           },
           {
-            "name": "quote_mint",
+            "name": "quoteMint",
             "type": "pubkey"
           },
           {
-            "name": "base_vault",
+            "name": "baseVault",
             "type": "pubkey"
           },
           {
-            "name": "quote_vault",
+            "name": "quoteVault",
             "type": "pubkey"
           },
           {
-            "name": "creator_fee_vault",
+            "name": "creatorFeeVault",
             "type": "pubkey"
           },
           {
-            "name": "holders_fee_vault",
+            "name": "holdersFeeVault",
             "type": "pubkey"
           },
           {
-            "name": "nft_fee_vault",
+            "name": "nftFeeVault",
             "type": "pubkey"
           },
           {
-            "name": "protocol_fee_vault",
+            "name": "protocolFeeVault",
             "docs": [
               "Protocol fee vault (12.5% of total swap fees)",
               "Can be permissionlessly swept to Squads multisig"
@@ -4788,143 +4794,143 @@
             "type": "pubkey"
           },
           {
-            "name": "lp_mint",
+            "name": "lpMint",
             "type": "pubkey"
           },
           {
-            "name": "price_q64_64",
+            "name": "priceQ6464",
             "type": "u128"
           },
           {
-            "name": "total_shares",
+            "name": "totalShares",
             "type": "u128"
           },
           {
-            "name": "total_holder_units",
+            "name": "totalHolderUnits",
             "type": "u128"
           },
           {
-            "name": "total_nft_units",
+            "name": "totalNftUnits",
             "type": "u128"
           },
           {
-            "name": "reward_indexes",
+            "name": "rewardIndexes",
             "type": {
               "defined": {
-                "name": "RewardIndexes"
+                "name": "rewardIndexes"
               }
             }
           },
           {
-            "name": "last_updated",
+            "name": "lastUpdated",
             "type": "i64"
           },
           {
-            "name": "last_swap_time",
+            "name": "lastSwapTime",
             "docs": [
               "Legacy: timestamp of last swap (can be used for analytics/legacy)"
             ],
             "type": "i64"
           },
           {
-            "name": "last_volatility_update",
+            "name": "lastVolatilityUpdate",
             "docs": [
               "timestamp of last volatility update"
             ],
             "type": "i64"
           },
           {
-            "name": "initial_bin_id",
+            "name": "initialBinId",
             "type": "i32"
           },
           {
-            "name": "active_bin",
+            "name": "activeBin",
             "type": "i32"
           },
           {
-            "name": "previous_bin",
+            "name": "previousBin",
             "type": "i32"
           },
           {
-            "name": "reference_bin",
+            "name": "referenceBin",
             "type": "i32"
           },
           {
-            "name": "split_holders_microbps",
+            "name": "splitHoldersMicrobps",
             "type": "u32"
           },
           {
-            "name": "split_nft_microbps",
+            "name": "splitNftMicrobps",
             "type": "u32"
           },
           {
-            "name": "split_creator_extra_microbps",
+            "name": "splitCreatorExtraMicrobps",
             "type": "u32"
           },
           {
-            "name": "variable_fee_control",
+            "name": "variableFeeControl",
             "docs": [
               "variable_fee_control (C)"
             ],
             "type": "u32"
           },
           {
-            "name": "max_volatility_accumulator",
+            "name": "maxVolatilityAccumulator",
             "docs": [
               "cap on va accumulator"
             ],
             "type": "u32"
           },
           {
-            "name": "volatility_reference",
+            "name": "volatilityReference",
             "docs": [
               "vr state"
             ],
             "type": "u32"
           },
           {
-            "name": "volatility_accumulator",
+            "name": "volatilityAccumulator",
             "docs": [
               "va state"
             ],
             "type": "u32"
           },
           {
-            "name": "bin_step_bps",
+            "name": "binStepBps",
             "type": "u16"
           },
           {
-            "name": "base_fee_bps",
+            "name": "baseFeeBps",
             "type": "u16"
           },
           {
-            "name": "creator_cut_bps",
+            "name": "creatorCutBps",
             "type": "u16"
           },
           {
-            "name": "legacy_volatility_multiplier_bps",
+            "name": "legacyVolatilityMultiplierBps",
             "type": "u16"
           },
           {
-            "name": "filter_period",
+            "name": "filterPeriod",
             "docs": [
               "seconds"
             ],
             "type": "u16"
           },
           {
-            "name": "decay_period",
+            "name": "decayPeriod",
             "type": "u16"
           },
           {
-            "name": "reduction_factor_bps",
+            "name": "reductionFactorBps",
             "docs": [
               "0..=10000"
             ],
             "type": "u16"
           },
           {
-            "name": "max_dynamic_fee_bps",
+            "name": "maxDynamicFeeBps",
             "docs": [
               "Cap on total fee (base + variable)"
             ],
@@ -4939,11 +4945,11 @@
             "type": "u8"
           },
           {
-            "name": "pause_bits",
+            "name": "pauseBits",
             "type": "u8"
           },
           {
-            "name": "accounting_mode",
+            "name": "accountingMode",
             "docs": [
               "Accounting mode:",
               "0 = legacy global LP shares",
@@ -4952,14 +4958,14 @@
             "type": "u8"
           },
           {
-            "name": "dynamic_fee_enabled",
+            "name": "dynamicFeeEnabled",
             "docs": [
               "Dynamic fee enabled flag (0 = disabled, 1 = enabled)"
             ],
             "type": "u8"
           },
           {
-            "name": "_fee_reserved",
+            "name": "feeReserved",
             "docs": [
               "Reserved for future parameters (and padding)"
             ],
@@ -4971,7 +4977,7 @@
             }
           },
           {
-            "name": "_pad2",
+            "name": "pad2",
             "docs": [
               "Explicit padding to bring total struct size to a multiple of 8"
             ],
@@ -4986,7 +4992,7 @@
       }
     },
     {
-      "name": "PoolAccountingVerified",
+      "name": "poolAccountingVerified",
       "docs": [
         "Event emitted when pool accounting is verified."
       ],
@@ -4998,31 +5004,31 @@
             "type": "pubkey"
           },
           {
-            "name": "base_vault_balance",
+            "name": "baseVaultBalance",
             "type": "u64"
           },
           {
-            "name": "quote_vault_balance",
+            "name": "quoteVaultBalance",
             "type": "u64"
           },
           {
-            "name": "bin_base_total",
+            "name": "binBaseTotal",
             "type": "u128"
           },
           {
-            "name": "bin_quote_total",
+            "name": "binQuoteTotal",
             "type": "u128"
           },
           {
-            "name": "base_drift",
+            "name": "baseDrift",
             "type": "i128"
           },
           {
-            "name": "quote_drift",
+            "name": "quoteDrift",
             "type": "i128"
           },
           {
-            "name": "verified_by",
+            "name": "verifiedBy",
             "type": "pubkey"
           },
           {
@@ -5033,7 +5039,7 @@
       }
     },
     {
-      "name": "PoolInitialized",
+      "name": "poolInitialized",
       "docs": [
         "Emitted once when a pool is initialized."
       ],
@@ -5053,39 +5059,39 @@
             "type": "pubkey"
           },
           {
-            "name": "base_mint",
+            "name": "baseMint",
             "type": "pubkey"
           },
           {
-            "name": "quote_mint",
+            "name": "quoteMint",
             "type": "pubkey"
           },
           {
-            "name": "bin_step_bps",
+            "name": "binStepBps",
             "type": "u16"
           },
           {
-            "name": "initial_price_q64_64",
+            "name": "initialPriceQ6464",
             "type": "u128"
           },
           {
-            "name": "base_fee_bps",
+            "name": "baseFeeBps",
             "type": "u16"
           },
           {
-            "name": "creator_cut_bps",
+            "name": "creatorCutBps",
             "type": "u16"
           },
           {
-            "name": "split_holders_microbps",
+            "name": "splitHoldersMicrobps",
             "type": "u32"
           },
           {
-            "name": "split_nft_microbps",
+            "name": "splitNftMicrobps",
             "type": "u32"
           },
           {
-            "name": "split_creator_extra_microbps",
+            "name": "splitCreatorExtraMicrobps",
             "type": "u32"
           },
           {
@@ -5096,7 +5102,7 @@
       }
     },
     {
-      "name": "Position",
+      "name": "position",
       "docs": [
         "A Position represents *ownership authority* in a pool.",
         "It does NOT store liquidity. All accounting is per-bin in PositionBin.",
@@ -5129,14 +5135,14 @@
             "type": "u64"
           },
           {
-            "name": "created_at",
+            "name": "createdAt",
             "docs": [
               "Creation timestamp"
             ],
             "type": "i64"
           },
           {
-            "name": "last_updated",
+            "name": "lastUpdated",
             "docs": [
               "Last updated timestamp"
             ],
@@ -5150,7 +5156,7 @@
             "type": "u8"
           },
           {
-            "name": "_reserved",
+            "name": "reserved",
             "docs": [
               "Reserved for future use (alignment + upgrades)"
             ],
@@ -5165,7 +5171,7 @@
       }
     },
     {
-      "name": "PositionBin",
+      "name": "positionBin",
       "docs": [
         "A PositionBin represents how many bin-shares",
         "a specific Position owns in a specific LiquidityBin.",
@@ -5191,7 +5197,7 @@
             "type": "pubkey"
           },
           {
-            "name": "bin_index",
+            "name": "binIndex",
             "docs": [
               "Bin index this position participates in"
             ],
@@ -5207,18 +5213,18 @@
             "type": "u128"
           },
           {
-            "name": "fee_growth_base_q128",
+            "name": "feeGrowthBaseQ128",
             "docs": [
               "Accrued fees (optional, future use)"
             ],
             "type": "u128"
           },
           {
-            "name": "fee_growth_quote_q128",
+            "name": "feeGrowthQuoteQ128",
             "type": "u128"
           },
           {
-            "name": "last_updated",
+            "name": "lastUpdated",
             "docs": [
               "Last update timestamp"
             ],
@@ -5232,7 +5238,7 @@
             "type": "u8"
           },
           {
-            "name": "_reserved",
+            "name": "reserved",
             "docs": [
               "Reserved for upgrades / alignment"
             ],
@@ -5247,7 +5253,7 @@
       }
     },
     {
-      "name": "PriceObservation",
+      "name": "priceObservation",
       "docs": [
         "Single price observation at a specific timestamp.",
         "",
@@ -5272,7 +5278,7 @@
             "type": "i64"
           },
           {
-            "name": "cumulative_bin_id_low",
+            "name": "cumulativeBinIdLow",
             "docs": [
               "Cumulative sum of active bin ID (for TWAP price calculation) - low 64 bits",
               "Full value = cumulative_bin_id_low | (cumulative_bin_id_high << 64)"
@@ -5280,21 +5286,21 @@
             "type": "u64"
           },
           {
-            "name": "cumulative_bin_id_high",
+            "name": "cumulativeBinIdHigh",
             "docs": [
               "Cumulative sum of active bin ID - high 64 bits (signed)"
             ],
             "type": "i64"
           },
           {
-            "name": "cumulative_volatility_low",
+            "name": "cumulativeVolatilityLow",
             "docs": [
               "Cumulative sum of volatility accumulator (for volatility TWAP) - low 64 bits"
             ],
             "type": "u64"
           },
           {
-            "name": "cumulative_volatility_high",
+            "name": "cumulativeVolatilityHigh",
             "docs": [
               "Cumulative sum of volatility accumulator - high 64 bits"
             ],
@@ -5304,7 +5310,7 @@
       }
     },
     {
-      "name": "RewardIndexes",
+      "name": "rewardIndexes",
       "docs": [
         "Tracks accumulated reward indexes for holders and NFT stakers."
       ],
@@ -5315,18 +5321,18 @@
         "kind": "struct",
         "fields": [
           {
-            "name": "holders_q128",
+            "name": "holdersQ128",
             "type": "u128"
           },
           {
-            "name": "nft_q128",
+            "name": "nftQ128",
             "type": "u128"
           }
         ]
       }
     },
     {
-      "name": "SwapExecuted",
+      "name": "swapExecuted",
       "docs": [
         "Emitted on each swap execution."
       ],
@@ -5342,30 +5348,30 @@
             "type": "pubkey"
           },
           {
-            "name": "in_mint",
+            "name": "inMint",
             "type": "pubkey"
           },
           {
-            "name": "out_mint",
+            "name": "outMint",
             "type": "pubkey"
           },
           {
-            "name": "amount_in",
+            "name": "amountIn",
             "type": "u64"
           },
           {
-            "name": "amount_out",
+            "name": "amountOut",
             "type": "u64"
           },
           {
-            "name": "total_fee",
+            "name": "totalFee",
             "docs": [
               "Total fee charged (token domain depends on direction; commonly quote)."
             ],
             "type": "u64"
           },
           {
-            "name": "price_after_q64_64",
+            "name": "priceAfterQ6464",
             "docs": [
               "Post-swap price marker in Q64.64."
             ],
@@ -5379,7 +5385,7 @@
       }
     },
     {
-      "name": "SwapRoute",
+      "name": "swapRoute",
       "docs": [
         "Swap route specifying bin indices to traverse."
       ],
@@ -5387,7 +5393,7 @@
         "kind": "struct",
         "fields": [
           {
-            "name": "bin_indices",
+            "name": "binIndices",
             "docs": [
               "Ordered bin indices (best price -> worst price)"
             ],
@@ -5399,7 +5405,7 @@
       }
     },
     {
-      "name": "SwapSpec",
+      "name": "swapSpec",
       "docs": [
         "Swap specification - supports both exact input and exact output modes.",
         "",
@@ -5411,27 +5417,27 @@
         "kind": "enum",
         "variants": [
           {
-            "name": "ExactIn",
+            "name": "exactIn",
             "fields": [
               {
-                "name": "amount_in",
+                "name": "amountIn",
                 "type": "u64"
               },
               {
-                "name": "min_amount_out",
+                "name": "minAmountOut",
                 "type": "u64"
               }
             ]
           },
           {
-            "name": "ExactOut",
+            "name": "exactOut",
             "fields": [
               {
-                "name": "amount_out",
+                "name": "amountOut",
                 "type": "u64"
               },
               {
-                "name": "max_amount_in",
+                "name": "maxAmountIn",
                 "type": "u64"
               }
             ]
@@ -5440,7 +5446,7 @@
       }
     },
     {
-      "name": "SyncHolderStakeEvent",
+      "name": "syncHolderStakeEvent",
       "docs": [
         "Emitted when user synchronizes their staked CIPHER amount for time-weighted rewards.",
         "This is a checkpoint that records stake entry/exit for proper reward calculation.",
@@ -5467,23 +5473,23 @@
             "type": "pubkey"
           },
           {
-            "name": "previous_staked_amount",
+            "name": "previousStakedAmount",
             "type": "u64"
           },
           {
-            "name": "new_staked_amount",
+            "name": "newStakedAmount",
             "type": "u64"
           },
           {
-            "name": "accrued_rewards",
+            "name": "accruedRewards",
             "type": "u128"
           },
           {
-            "name": "pending_rewards_after",
+            "name": "pendingRewardsAfter",
             "type": "u128"
           },
           {
-            "name": "stake_entry_index",
+            "name": "stakeEntryIndex",
             "type": "u128"
           },
           {
@@ -5494,7 +5500,7 @@
       }
     },
     {
-      "name": "UserHolderState",
+      "name": "userHolderState",
       "docs": [
         "Per-user holder reward claim state with time-weighted staking checkpoints.",
         "Tracks stake periods and accumulated rewards from CIPHER staked via Streamflow.",
@@ -5547,7 +5553,7 @@
         "kind": "struct",
         "fields": [
           {
-            "name": "stake_entry_index_q128",
+            "name": "stakeEntryIndexQ128",
             "docs": [
               "Reward index when current stake period began",
               "Set on each sync to current global index",
@@ -5556,7 +5562,7 @@
             "type": "u128"
           },
           {
-            "name": "pending_rewards",
+            "name": "pendingRewards",
             "docs": [
               "Accumulated rewards from previous stake periods (unclaimed)",
               "Preserved across syncs to allow multi-period accumulation",
@@ -5565,7 +5571,7 @@
             "type": "u128"
           },
           {
-            "name": "total_claimed",
+            "name": "totalClaimed",
             "docs": [
               "Total rewards claimed by this user (cumulative, never decreases)",
               "Sum across all periods and claim events",
@@ -5581,7 +5587,7 @@
             "type": "pubkey"
           },
           {
-            "name": "_reserved",
+            "name": "reserved",
             "docs": [
               "Reserved space for future upgrades (40 bytes)",
               "Reduced from 64 bytes due to new fields"
@@ -5594,7 +5600,7 @@
             }
           },
           {
-            "name": "current_staked_amount",
+            "name": "currentStakedAmount",
             "docs": [
               "Current staked CIPHER amount (per last sync)",
               "Updated via `sync_holder_stake()` after each Streamflow stake/unstake",
@@ -5608,7 +5614,7 @@
             "type": "u64"
           },
           {
-            "name": "last_claim_time",
+            "name": "lastClaimTime",
             "docs": [
               "Last timestamp when user claimed rewards",
               "Used for analytics and monitoring"
@@ -5616,7 +5622,7 @@
             "type": "i64"
           },
           {
-            "name": "last_sync_time",
+            "name": "lastSyncTime",
             "docs": [
               "Last timestamp when user synced their stake",
               "Used to detect stale state and prompt frontend to sync"
@@ -5631,7 +5637,7 @@
             "type": "u8"
           },
           {
-            "name": "_pad",
+            "name": "pad",
             "docs": [
               "Additional padding to align struct to 16-byte boundary (Pod requirement)"
             ],
@@ -5646,7 +5652,7 @@
       }
     },
     {
-      "name": "UserNftState",
+      "name": "userNftState",
       "docs": [
         "Per-user NFT reward claim state.",
         "Tracks the last claimed index to calculate pending rewards.",
@@ -5687,7 +5693,7 @@
             "type": "pubkey"
           },
           {
-            "name": "last_claimed_index_q128",
+            "name": "lastClaimedIndexQ128",
             "docs": [
               "Last reward index when user claimed",
               "Initialized to current index on first claim (prevents retroactive)"
@@ -5695,7 +5701,7 @@
             "type": "u128"
           },
           {
-            "name": "total_claimed",
+            "name": "totalClaimed",
             "docs": [
               "Total rewards claimed by this user (cumulative, never decreases)",
               "Sum across all pools and claim events",
@@ -5704,7 +5710,7 @@
             "type": "u128"
           },
           {
-            "name": "last_claim_time",
+            "name": "lastClaimTime",
             "docs": [
               "Last timestamp when user claimed",
               "Used for analytics and rate limiting (if desired)"
@@ -5712,7 +5718,7 @@
             "type": "i64"
           },
           {
-            "name": "_reserved",
+            "name": "reserved",
             "docs": [
               "Reserved space for future upgrades (64 bytes)",
               "Using u64 array to avoid Pod padding issues"
@@ -5732,7 +5738,7 @@
             "type": "u8"
           },
           {
-            "name": "_pad",
+            "name": "pad",
             "docs": [
               "Additional padding to reach target size"
             ],
@@ -5747,7 +5753,7 @@
       }
     },
     {
-      "name": "WithdrawalSpec",
+      "name": "withdrawalSpec",
       "docs": [
         "Withdrawal specification - supports both exact and range modes.",
         "",
@@ -5759,14 +5765,14 @@
         "kind": "enum",
         "variants": [
           {
-            "name": "Exact",
+            "name": "exact",
             "fields": [
               {
                 "name": "withdrawals",
                 "type": {
                   "vec": {
                     "defined": {
-                      "name": "BinWithdrawal"
+                      "name": "binWithdrawal"
                     }
                   }
                 }
@@ -5774,18 +5780,18 @@
             ]
           },
           {
-            "name": "Range",
+            "name": "range",
             "fields": [
               {
-                "name": "from_bin",
+                "name": "fromBin",
                 "type": "i32"
               },
               {
-                "name": "to_bin",
+                "name": "toBin",
                 "type": "i32"
               },
               {
-                "name": "bps_to_withdraw",
+                "name": "bpsToWithdraw",
                 "type": "u16"
               }
             ]
@@ -5794,4 +5800,4 @@
       }
     }
   ]
-}
+};

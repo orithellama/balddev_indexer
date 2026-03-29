@@ -2,14 +2,14 @@ import anchorPkg, { type Idl } from "@coral-xyz/anchor";
 const { BorshCoder } = anchorPkg;
 import { createRequire } from "node:module";
 
-import type { OrbitFinance } from "./orbit_finance.js";
+import type { BalddevFinance } from "./balddev_finance.js";
 
 const require = createRequire(import.meta.url);
-const idl = require("./orbit_finance.json") as OrbitFinance;
+const idl = require("./balddev_finance.json") as BalddevFinance;
 
 // Anchor's BorshCoder expects an "Idl" shape
-export const ORBIT_IDL = idl as unknown as Idl;
-export const coder = new BorshCoder(ORBIT_IDL);
+export const BALDDEV_IDL = idl as unknown as Idl;
+export const coder = new BorshCoder(BALDDEV_IDL);
 
 /**
  * Decode an Anchor account from raw account data.
@@ -30,7 +30,7 @@ export const DISCRIMINATORS = {
 
 // EVENTS (Anchor "Program data: <base64>")
 
-export type OrbitDecodedEvent = {
+export type BalddevDecodedEvent = {
   name: string;
   data: Record<string, any>;
 };
@@ -41,7 +41,7 @@ export type OrbitDecodedEvent = {
  *
  * Anchor emits event payloads this way.
  */
-export function decodeEventLogLine(logLine: string): OrbitDecodedEvent | null {
+export function decodeEventLogLine(logLine: string): BalddevDecodedEvent | null {
   if (!logLine.startsWith("Program data: ")) return null;
 
   try {
@@ -60,9 +60,9 @@ export function decodeEventLogLine(logLine: string): OrbitDecodedEvent | null {
 /**
  * Decode ALL events from a full logs array.
  */
-export function decodeEventsFromLogs(logs: readonly string[] | null | undefined): OrbitDecodedEvent[] {
+export function decodeEventsFromLogs(logs: readonly string[] | null | undefined): BalddevDecodedEvent[] {
   if (!logs || logs.length === 0) return [];
-  const out: OrbitDecodedEvent[] = [];
+  const out: BalddevDecodedEvent[] = [];
   for (const line of logs) {
     const e = decodeEventLogLine(line);
     if (e) out.push(e);

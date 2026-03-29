@@ -47,5 +47,5 @@ jobs:
       - name: Smoke test (import)
         env:
           SOLANA_RPC_URL: https://api.mainnet-beta.solana.com
-          ORBIT_PROGRAM_ID: Fn3fA3fjsmpULNL7E9U79jKTe1KHxPtQeWdURCbJXCnM
+          BALDDEV_PROGRAM_ID: Fn3fA3fjsmpULNL7E9U79jKTe1KHxPtQeWdURCbJXCnM
         run: node -e "console.log('ok')"

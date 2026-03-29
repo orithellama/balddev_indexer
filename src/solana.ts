@@ -5,7 +5,7 @@ export const connection = new Connection(env.SOLANA_RPC_URL, {
   commitment: "confirmed",
 });
 
-export const PROGRAM_ID = new PublicKey(env.ORBIT_PROGRAM_ID);
+export const PROGRAM_ID = new PublicKey(env.BALDDEV_PROGRAM_ID);
 
 export const pk = (v: string) => new PublicKey(v);
 

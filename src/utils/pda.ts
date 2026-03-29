@@ -1,7 +1,7 @@
 import { PublicKey } from "@solana/web3.js";
 
 /**
- * Orbit bin PDA:
+ * Balddev bin PDA:
  * seeds = ["bin", pool, u64(binIndex LE)]
  */
 export function deriveBinPda(programId: PublicKey, pool: PublicKey, binIndex: bigint): PublicKey {
@@ -16,7 +16,7 @@ export function deriveBinPda(programId: PublicKey, pool: PublicKey, binIndex: bi
 }
 
 /**
- * Orbit BinArray PDA (for position-bin accounting mode):
+ * Balddev BinArray PDA (for position-bin accounting mode):
  * seeds = ["bin_array", pool, i32(lowerBinIndex LE)]
  */
 export function deriveBinArrayPda(programId: PublicKey, pool: PublicKey, lowerBinIndex: number): PublicKey {

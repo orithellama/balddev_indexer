@@ -15,7 +15,7 @@ export const env = z
     CORS_ORIGINS: z.string().optional(),
 
     SOLANA_RPC_URL: z.string().url(),
-    ORBIT_PROGRAM_ID: z.string().min(32),
+    BALDDEV_PROGRAM_ID: z.string().min(32),
 
     // optional
     POOLS: z.string().optional(),
@@ -28,7 +28,7 @@ export const env = z
     SIGNATURE_LOOKBACK: z.coerce.number().int().min(10).max(5_000).default(200),
     TRADES_POLL_MS: z.coerce.number().int().min(500).max(60_000).default(4000),
 
-    DEX_KEY: z.string().min(2).default("orbit_finance"),
+    DEX_KEY: z.string().min(2).default("balddev"),
 
     // Historic backfill
     BACKFILL_MAX_SIGNATURES_PER_POOL: z.coerce.number().int().min(0).max(250_000).default(0),

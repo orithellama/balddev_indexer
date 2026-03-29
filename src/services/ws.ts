@@ -76,18 +76,18 @@ export type WsSnapshotMessage = {
 export type WsOutboundMessage = WsHelloMessage | WsTradeMessage | WsEventMessage | WsSnapshotMessage;
 
 /**
- * Socket with Orbit metadata (subscriptions)
+ * Socket with Balddev metadata (subscriptions)
  */
-export type OrbitSocket = WebSocket & {
-  __orbitPools?: Set<string>;
+export type BalddevSocket = WebSocket & {
+  __balddevPools?: Set<string>;
 };
 
 /**
  * WebSocket Hub interface
  */
 export type WsHub = {
-  add(ws: OrbitSocket): void;
-  remove(ws: OrbitSocket): void;
+  add(ws: BalddevSocket): void;
+  remove(ws: BalddevSocket): void;
   broadcast(msg: WsOutboundMessage): void;
   size(): number;
 };
@@ -127,7 +127,7 @@ function extractPool(msg: WsOutboundMessage): string | null {
  * Hub implementation (subscription-aware broadcast)
  */
 export function createWsHub(): WsHub {
-  const clients = new Set<OrbitSocket>();
+  const clients = new Set<BalddevSocket>();
 
   return {
     add(ws) {
@@ -152,7 +152,7 @@ export function createWsHub(): WsHub {
         }
 
         // No subscriptions -> skip
-        const subs = ws.__orbitPools;
+        const subs = ws.__balddevPools;
         if (!subs || subs.size === 0) continue;
 
         // Send only to subscribed pools

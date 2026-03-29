@@ -304,7 +304,7 @@ app.log.info(
     discoverPools: env.DISCOVER_POOLS,
     refreshSec: env.DISCOVERY_REFRESH_SEC,
   },
-  "orbit dex adapter api started"
+  "balddev adapter api started"
 );
 
 /**

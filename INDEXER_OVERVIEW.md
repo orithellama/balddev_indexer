@@ -1,10 +1,10 @@
 ## Overview
 
-This indexer provides **real-time and historical** indexing of **ALL 15 DLMM events** from the Orbit Finance program. The system automatically updates your database to the latest block with **zero latency**, ensuring your website always has up-to-date data.
+This indexer provides **real-time and historical** indexing of **ALL 15 DLMM events** from the Balddev program. The system automatically updates your database to the latest block with **zero latency**, ensuring your website always has up-to-date data.
 
 ## Supported Events
 
-The indexer handles all 15 event types from the Orbit Finance IDL:
+The indexer handles all 15 event types from the Balddev IDL:
 
 ### Trading Events
 1. **SwapExecuted** - Trade execution with price and reserves
@@ -383,7 +383,7 @@ WS /api/v1/ws?ticket=abc...
 SOLANA_RPC_URL=https://api.mainnet-beta.solana.com
 
 # Program ID
-ORBIT_PROGRAM_ID=Fn3fA3fjsmpULNL7E9U79jKTe1KHxPtQeWdURCbJXCnM
+BALDDEV_PROGRAM_ID=Fn3fA3fjsmpULNL7E9U79jKTe1KHxPtQeWdURCbJXCnM
 
 # Database
 SUPABASE_URL=https://xxx.supabase.co
@@ -399,7 +399,7 @@ WS_TOKEN=<32+ character secret>
 # Server
 PORT=8080
 LOG_LEVEL=info
-DEX_KEY=orbit_finance
+DEX_KEY=balddev
 
 # Pool Discovery
 DISCOVER_POOLS=true

@@ -2,20 +2,20 @@
  * Program IDL in camelCase format in order to be used in JS/TS.
  *
  * Note that this is only a type helper and is not the actual IDL. The original
- * IDL can be found at `target/idl/cipher_nft_staking.json`.
+ * IDL can be found at `target/idl/balddev_nft_staking.json`.
  */
-export type CipherNftStaking = {
+export type BalddevNftStaking = {
   "address": "7dMir6E96FwiYQQ9mdsL6AKUmgzzrERwqj7mkhthxQgV",
   "metadata": {
     "name": "cipherNftStaking",
     "version": "0.1.0",
     "spec": "0.1.0",
-    "description": "Secure NFT staking program for Cipher/Orbit Finance ecosystem"
+    "description": "Secure NFT staking program for Balddev ecosystem"
   },
   "docs": [
-    "# Cipher NFT Staking Program",
+    "# Balddev NFT Staking Program",
     "",
-    "Secure NFT staking program for the Cipher/Orbit Finance ecosystem.",
+    "Secure NFT staking program for the Balddev ecosystem.",
     "",
     "## Features",
     "- NFT escrow via PDA (cannot be moved during lock)",
@@ -25,14 +25,14 @@ export type CipherNftStaking = {
     "- No admin backdoors (authority cannot steal NFTs)",
     "- Full event emission for off-chain indexing",
     "",
-    "## Integration with Orbit Finance DLMM",
+    "## Integration with Balddev",
     "",
-    "This program tracks NFT staking positions which Orbit Finance DLMM",
+    "This program tracks NFT staking positions which Balddev",
     "uses to determine fee claim eligibility:",
     "",
     "1. User stakes NFT here -> NFT locked in escrow",
-    "2. User trades on Orbit Finance DLMM pools -> earns trading fees",
-    "3. Orbit Finance DLMM reads stake_account: is_active && !is_unlocked()",
+    "2. User trades on Balddev pools -> earns trading fees",
+    "3. Balddev reads stake_account: is_active && !is_unlocked()",
     "4. If true -> user is eligible to claim fees",
     "",
     "## Security Model",
@@ -231,7 +231,7 @@ export type CipherNftStaking = {
         "",
         "# Arguments",
         "* `lock_duration` - How long to lock in seconds",
-        "* `associated_pool` - Optional Orbit Finance DLMM pool address for targeted benefits",
+        "* `associated_pool` - Optional Balddev pool address for targeted benefits",
         "",
         "# Security",
         "- Verifies NFT ownership",
@@ -875,7 +875,7 @@ export type CipherNftStaking = {
         "- Allowed lock durations",
         "- Whether staking is enabled",
         "",
-        "**Integration with Orbit Finance DLMM:** Orbit Finance DLMM checks if a user has an active",
+        "**Integration with Balddev:** Balddev checks if a user has an active",
         "stake by reading the StakeAccount. If staked -> eligible for fee claims."
       ],
       "type": {
@@ -1227,8 +1227,8 @@ export type CipherNftStaking = {
         "- Cannot be moved until unlock_at timestamp passes",
         "- Owner verification required for all operations",
         "",
-        "**Orbit Finance DLMM Integration:**",
-        "Orbit Finance DLMM reads this account to check: is_active && !is_unlocked(now)",
+        "**Balddev Integration:**",
+        "Balddev reads this account to check: is_active && !is_unlocked(now)",
         "If true -> user is eligible for fee claims"
       ],
       "type": {
@@ -1306,7 +1306,7 @@ export type CipherNftStaking = {
           {
             "name": "associatedPool",
             "docs": [
-              "Optional: Associated pool address from Orbit Finance DLMM",
+              "Optional: Associated pool address from Balddev",
               "If set, this stake provides benefits for that specific pool"
             ],
             "type": "pubkey"

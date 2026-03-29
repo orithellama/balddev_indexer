@@ -1,11 +1,11 @@
-# Orbit Finance DEX Adapter
+# Balddev Adapter
 
-A **read-only DEX adapter API** for **Orbit Finance (Solana)**.
+A **read-only DEX adapter API** for **Balddev (Solana)**.
 
 This service exposes **on-chain pool, price, and swap data**.
 
 It **does not custody keys**, **does not sign transactions**, and **does not mutate state**.
-The adapter reads directly from Solana RPC using the official Orbit Finance Anchor IDL.
+The adapter reads directly from Solana RPC using the official Balddev Anchor IDL.
 
 ---
 
@@ -99,9 +99,11 @@ Returns recent swaps for a pool (best-effort).
 ```
 PORT=8080
 SOLANA_RPC_URL=https://api.mainnet-beta.solana.com
-ORBIT_PROGRAM_ID=Fn3fA3fjsmpULNL7E9U79jKTe1KHxPtQeWdURCbJXCnM
-DEX_KEY=orbit_finance
+BALDDEV_PROGRAM_ID=Fn3fA3fjsmpULNL7E9U79jKTe1KHxPtQeWdURCbJXCnM
+DEX_KEY=balddev
 ```
+
+`BALDDEV_PROGRAM_ID` is the current environment variable name used by the codebase.
 
 # Run locally
 
@@ -146,7 +148,7 @@ fly launch --no-deploy
 Ensure your fly.toml contains this (adjust app and primary_region as needed):
 
 ```toml
-app = "orbit-dex-adapter-api [or your app name]"
+app = "balddev-adapter-api [or your app name]"
 primary_region = "ams"
 
 [build]
@@ -175,8 +177,8 @@ Fly uses secrets instead of .env files. Set required secrets:
 ```bash
 fly secrets set \
   SOLANA_RPC_URL="https://YOUR_RPC_ENDPOINT" \
-  ORBIT_PROGRAM_ID="Fn3fA3fjsmpULNL7E9U79jKTe1KHxPtQeWdURCbJXCnM" \
-  DEX_KEY="orbit_finance"
+  BALDDEV_PROGRAM_ID="Fn3fA3fjsmpULNL7E9U79jKTe1KHxPtQeWdURCbJXCnM" \
+  DEX_KEY="balddev"
 ```
 
 **Optional (recommended for production stability):**
@@ -202,7 +204,7 @@ fly logs
 You should see something like:
  - pools discovered
  - Server listening at http://0.0.0.0:8080
- - orbit dex adapter api started
+ - balddev adapter api started
 
 Verify your deployment and test endpoints
 Get your app URL:
@@ -220,5 +222,4 @@ curl https://YOUR-FLY-APP.fly.dev/latest-block
 MIT © 2026 CipherLabsX C Corp
 
 This project is open-source and free to use, modify, and distribute under the MIT License.
-
 

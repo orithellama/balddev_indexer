@@ -26,7 +26,7 @@ import {
 } from "@solana/web3.js";
 
 import { env } from "../config.js";
-import { decodeEventsFromLogs, type OrbitDecodedEvent } from "../idl/coder.js";
+import { decodeEventsFromLogs, type BalddevDecodedEvent } from "../idl/coder.js";
 import { readPool } from "../services/pool_reader.js";
 import { deriveTradeFromTransaction } from "../services/trade_derivation.js";
 import {
@@ -133,7 +133,7 @@ function getAccountKeys(tx: VersionedTransactionResponse): PublicKey[] {
   return [...staticKeys, ...loadedW, ...loadedR];
 }
 
-function safeEventData(d: OrbitDecodedEvent["data"] | null | undefined): Record<string, unknown> | null {
+function safeEventData(d: BalddevDecodedEvent["data"] | null | undefined): Record<string, unknown> | null {
   if (!d || typeof d !== "object") return null;
   return d as Record<string, unknown>;
 }
@@ -181,7 +181,7 @@ function addressFromUnknown(value: unknown, depth = 0): string | null {
  * Best-effort pool discovery from decoded event payload.
  * (Your Anchor events sometimes contain pool/poolId/pairId.)
  */
-function eventCandidatePools(evt: OrbitDecodedEvent): string[] {
+function eventCandidatePools(evt: BalddevDecodedEvent): string[] {
   const d = evt.data as Record<string, unknown> | null | undefined;
   const out: string[] = [];
 
@@ -196,7 +196,7 @@ function eventCandidatePools(evt: OrbitDecodedEvent): string[] {
   return out;
 }
 
-function pickFirstPoolFromEvent(evt: OrbitDecodedEvent): string | null {
+function pickFirstPoolFromEvent(evt: BalddevDecodedEvent): string | null {
   const cands = eventCandidatePools(evt);
   return cands.length ? cands[0]! : null;
 }
@@ -574,7 +574,7 @@ async function run(): Promise<void> {
     confirmTransactionInitialTimeout: 60_000,
   });
 
-  const programId = new PublicKey(env.ORBIT_PROGRAM_ID);
+  const programId = new PublicKey(env.BALDDEV_PROGRAM_ID);
   const programIdStr = programId.toBase58();
 
   let before: string | undefined = opts.beforeSignature ?? undefined;
