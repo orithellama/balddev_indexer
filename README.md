@@ -219,7 +219,6 @@ curl https://YOUR-FLY-APP.fly.dev/latest-block
 
 ## License
 
-MIT © 2026 Balddev tm
+MIT © 2026 balddev (https://x.com/orithellama)
 
 This project is open-source and free to use, modify, and distribute under the MIT License.
-
